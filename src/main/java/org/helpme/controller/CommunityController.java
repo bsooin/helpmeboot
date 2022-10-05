@@ -1,5 +1,7 @@
 package org.helpme.controller;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.helpme.domain.CommunityVO;
 import org.helpme.domain.Criteria;
 import org.helpme.domain.PageMaker;
@@ -11,10 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,7 +23,8 @@ import java.io.File;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/board/*")
+@RequiredArgsConstructor
+@Slf4j
 public class CommunityController {
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 	
@@ -36,12 +36,12 @@ public class CommunityController {
 	private String uploadPath;
 	
 	// 게시글 작성
-	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	@GetMapping("/write")
 	public void registerGET(CommunityVO CommunityVO, Model model) throws Exception {
 		logger.info("write get ..........");
 	}
 	
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	@PostMapping("/write")
 	public String registPOST(
 			CommunityVO CommunityVO, @RequestParam(name = "attachFile", required = false) MultipartFile file,
 			HttpServletRequest request,RedirectAttributes rttr) throws Exception {
@@ -69,7 +69,7 @@ public class CommunityController {
 	
 	
 	// 게시판 리스트
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@GetMapping("/list")
 	// 실행할 메서드
 	// model 안에 request가 있다. model에 데이터를 저장하면 request에 저장된다.
 	public String list(Model model) throws Exception {
@@ -81,7 +81,7 @@ public class CommunityController {
 	
 	// 게시글 보기
 	
-	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	@GetMapping("/view")
 	public String view(
 			@RequestParam("cBoardId") int cBoardId, 
 			Model model) throws Exception {
@@ -92,7 +92,7 @@ public class CommunityController {
 	 
 	// 게시글 삭제
 	
-	@RequestMapping(value = "/remove", method = RequestMethod.GET)
+	@GetMapping("/remove")
 	public String remove(
 			@RequestParam("cBoardId") int cBoardId, 
 			RedirectAttributes rttr) throws Exception {
@@ -104,12 +104,12 @@ public class CommunityController {
 	
 	// 게시글 수정
 	
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	@GetMapping("/modify")
 		public void modifyGET(int cBoardId, Model model) throws Exception {
 		model.addAttribute("list", CommunityService.view(cBoardId));
 	}
 	 
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	@PostMapping("/modify")
 	public String modifyPOST(
 		CommunityVO CommunityVO,@RequestParam(name = "attachFile", required = false) MultipartFile file,
 		RedirectAttributes rttr) throws Exception {
@@ -125,7 +125,7 @@ public class CommunityController {
 	}
 	 
 	// 게시판 리스트
-		@RequestMapping(value = "/faqlist", method = RequestMethod.GET)
+		@GetMapping("/faqlist")
 		// 실행할 메서드
 		// model 안에 request가 있다. model에 데이터를 저장하면 request에 저장된다.
 		public String faqlist(Model model) throws Exception {
@@ -134,7 +134,7 @@ public class CommunityController {
 			return "board/faqlist";
 	} 
 	
-	@RequestMapping(value = "/reply", method = RequestMethod.GET)
+	@GetMapping("/reply")
 	public void ajaxTest() {
 		
 	}
@@ -142,12 +142,12 @@ public class CommunityController {
 
 	 // 이건 사용 X
 
-	@RequestMapping(value = "/viewPage", method = RequestMethod.GET)
+	@GetMapping("/viewPage")
 	public void read(@RequestParam("cBoardId") int cBoardId, @ModelAttribute("cri") Criteria cri, Model model) throws Exception {
 		 model.addAttribute(CommunityService.view(cBoardId));
 	}
 	 
-	 @RequestMapping(value = "/removePage", method = RequestMethod.POST)
+	 @PostMapping("/removePage")
 		public String remove(@RequestParam("cBoardId") int cBoardId, Criteria cri, RedirectAttributes rttr) throws Exception {
 			CommunityService.remove(cBoardId);
 			rttr.addAttribute("page", cri.getPage());
@@ -156,7 +156,7 @@ public class CommunityController {
 			return "redirect:/board/list";
 		}
 	 
-	 @RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
+	 @GetMapping("/modifyPage")
 	 public void modifyPagingGET(@RequestParam("cBoardId") int cBoardId, @ModelAttribute("cri") Criteria cri, Model 
 	model)
 	 throws Exception {
@@ -164,12 +164,12 @@ public class CommunityController {
 	 }
 	 
 	 
-	 @RequestMapping(value = "/listCri", method = RequestMethod.GET)
+	 @GetMapping("/listCri")
 	 public void listAll(Criteria cri, Model model) throws Exception {
 	 logger.info("show list Page with Criteria......................");
 	 model.addAttribute("list", CommunityService.listCriteria(cri));
 	 }
-	 @RequestMapping(value = "/listPage", method = RequestMethod.GET)
+	 @GetMapping("/listPage")
 	 public void listPage(@ModelAttribute("cri") Criteria cri, Model model) throws Exception {
 	 logger.info(cri.toString());
 	 model.addAttribute("list", CommunityService.listCriteria(cri));
