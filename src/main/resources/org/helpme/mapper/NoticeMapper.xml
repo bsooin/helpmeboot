@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.helpme.mapper.NoticeMapper">
+ 
+    <insert id="create">
+        insert into notice 
+		(noticeTitle, noticeCon, noticeRegdate, noticeCat)
+		values (#{noticeTitle}, #{noticeCon}, #{noticeRegdate},#{noticeCat})
+		</insert>
+		
+ <select id="read" resultType="org.helpme.domain.NoticeVO">
+ select 
+   noticeId, noticeTitle, noticeCon, noticeRegdate, noticeCat
+ from 
+   Notice 
+ where noticeId = #{noticeId}
+ </select>
+
+
+ <select id="listAll" resultType="org.helpme.domain.NoticeVO">
+ <![CDATA[
+ select 
+   noticeId, noticeTitle, noticeCon, noticeRegdate, noticeCat
+ from 
+   Notice 
+ where noticeId > 0 
+ order by noticeId desc, noticeRegdate desc
+ ]]>  
+ </select>
+ 
+  <update id="modify">
+ update notice set 
+ noticeTitle =#{noticeTitle},
+  noticeCon =#{noticeCon} ,
+  noticeCat =#{noticeCat}
+ where noticeId = #{noticeId}
+ </update>
+
+ <delete id="remove">
+ delete from Notice where noticeId = #{noticeId}
+ </delete>
+ 
+ <!--
+ <select id="listPage" resultType="org.helpme.domain.NoticeVO">
+ <![CDATA[
+ select 
+   noticeId, noticeTitle, noticeCon, noticeRegdate, noticeCat
+ from 
+   Notice 
+ where noticeId > 0 
+ order by noticeId desc, regdate desc
+ limit #{page}, 10
+ ]]>  
+ </select>
+
+  <select id="listCriteria" resultType="NoticeVO">
+ <![CDATA[
+ select 
+   noticeId, noticeTitle, noticeCon, noticeRegdate, noticeCat
+ from 
+      Notice 
+ where noticeId > 0 
+ order by noticeId desc, regdate desc
+ limit #{pageStart}, #{perPageNum}
+ ]]>  
+ </select>
+-->
+<!--
+
+ <select id="countPaging" resultType="int">
+ <![CDATA[
+ select 
+   count(noticeId) 
+ from 
+   Notice 
+ where 
+   noticeId > 0 
+ ]]>
+ </select>
+
+-->
+
+<sql id="search">
+ <if test="searchType != null" > 
+   <if test="searchType == 't'.toString()">
+     and noticeTitle like '#{keyword}' 
+   </if>
+   <if test="categoryNo != null">
+   <if test="noticeCat == 'notice">
+     and noticeCat = notice
+   </if>    
+   <if test="noticeCat  == 'event">
+    and noticeCat = event        
+   </if>   
+   </if>    
+    </if>           
+</sql>
+ 
+<select id="listSearch" resultType="NoticeVO">
+<![CDATA[  
+select noticeid, noticetitle, noticecon, noticeregdate, noticecat from
+(select rownum rnum, noticeid, noticetitle, noticecon, noticeregdate, noticecat from 
+(select * from notice where noticeId > 0 
+]]>  
+
+  <include refid="search"></include>
+  
+<![CDATA[    
+order by noticeid desc))
+where rnum between #{pageStart} and #{pageStart}+9
+]]> 
+
+ 
+</select>
+  
+<select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(noticeId) 
+  from Notice 
+  where noticeId > 0 
+]]>
+  <include refid="search"></include>
+ 
+</select>  
+
+</mapper>
+
+

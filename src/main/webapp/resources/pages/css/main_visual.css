@@ -1,0 +1,91 @@
+.slider {width: 1920px; height: 800px;}
+.slide-content {text-align: center; line-height: 600px; font-size: 100px; color: #fff; font-weight: bold;}
+.slide-text {text-align:left; line-height:600px; font-size:80px; font-family:'GmarketSansMedium'; color:#fff; padding:0px 12%;}
+#visual-slide-01{background-image:url("../images/main/main_visual01.jpg"); background-size:cover;}
+#visual-slide-02{background-image:url("../images/main/main_visual02.jpg"); background-size:cover;}
+#visual-slide-03{background-image:url("../images/main/main_visual03.jpg"); background-size:cover;}
+#visual-slide-04{background-image:url("../images/main/main_visual04.jpg"); background-size:cover;}
+
+ul,li {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+
+.font-pretendard{font-family: Pretendard;}
+.font-gsans-bold{font-family: 'GmarketSansBold';}
+.font-gsans-md{font-family: 'GmarketSansMedium';}
+.font-gsans-light{font-family: 'GmarketSansLight';}
+
+.color-black{color:#000;}
+
+.item_bg {height:600px;}
+
+.carousel-caption {
+  padding-top:0px;
+  padding-bottom:265px;
+}
+.carousel-control.left{background-image:none; background-repeat:none;}
+.carousel-control.right{background-image:none; background-repeat:none;}
+
+.main-arrow{width:30px; height:30px; position:absolute; top:45%;}
+
+
+
+#typed,#typed2,#typed3,#typed4 {
+	font-size:40px;
+	color:#fff;
+}
+.typing {
+	font-size: 40px;
+	font-family:'GmarketSansBold';
+	line-height:40px;
+}
+.typing::after {
+	content: '|';
+	display: inline;
+	-webkit-animation: blink 0.7s infinite;
+	-moz-animation: blink 0.7s infinite;
+	animation: blink 0.7s infinite;
+}
+.typing-cursor{
+   opacity: 0;
+	display: none;
+}
+@keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+
+@media screen and (max-width: 1200px){
+	.carousel-caption{padding-bottom:265px;}
+	.typing{ font-size:40px; line-height:40px;}
+}
+
+@media screen and (max-width: 992px){
+	.carousel-caption{padding-bottom:220px;}
+	.typing{ font-size:30px; line-height:30px;}
+	.main-arrow{top:55%;}
+}
+
+@media screen and (max-width: 820px){
+	.carousel-caption{padding-bottom:100px;}
+	.typing{ font-size:25px; line-height:25px;}
+}
+
+@media screen and (max-width:767px){
+	.carousel-caption{padding-left:30px; padding-right:30px; padding-bottom:165px;}
+	.typing {font-size: 22px; line-height:22px;}
+	.main-arrow{width:20px; height:20px; position:absolute; top:55%;}
+}

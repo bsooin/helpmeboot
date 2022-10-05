@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.helpme.mapper.ServiceMapper">
+
+	<insert id="regist">
+		insert into svc
+		(sname, categoryno, price, scon,
+		likeit, sregdate, viewcount, scount, userid, sAttach)
+		values
+		(#{sName},#{categoryNo}, #{price}, #{sCon}, 0, #{sRegdate}, 0, 0,
+		#{userId}, #{sAttach})
+	</insert>
+
+	<select id="read" resultType="org.helpme.domain.ServiceVO">
+		select
+		sno, sname, categoryno,
+		price, scon, likeit, sregdate, viewcount, scount, userid, sAttach
+		from
+		svc
+		where sno = #{sNo}
+	</select>
+	
+	<sql id="attach">
+		<if test="sAttach != null">
+			, sAttach = #{sAttach}
+		</if>
+	</sql>
+	
+	<update id="modify">
+		update svc set
+		sname =#{sName},
+		categoryno=#{categoryNo}, price=#{price}, scon =#{sCon},
+		sregdate =
+		#{sRegdate}
+		<include refid="attach"></include>
+		where sno = #{sNo}
+	</update>
+
+	<delete id="remove">
+		delete from svc where sno = #{sNo}
+	</delete>
+
+	<sql id="search">
+		<if test="categoryNo != null">
+			<if test="categoryNo == 1">
+				where categoryNo = 1
+			</if>
+			<if test="categoryNo == 2">
+				where categoryNo = 2
+			</if>
+			<if test="categoryNo == 3">
+				where categoryNo = 3
+			</if>
+			<if test="categoryNo == 4">
+				where categoryNo = 4
+			</if>
+			<if test="categoryNo == 5">
+				where categoryNo = 5 
+			</if>
+			<if test="categoryNo == 6">
+				where categoryNo = 6
+			</if>
+		</if>
+		<if test="keyword != null">
+			<if test="categoryNo == null">
+			 where sname like '%'||#{keyword}||'%'
+			</if>
+			<if test="categoryNo!=null">
+			and sname like '%'||#{keyword}||'%'
+			</if>
+		</if>
+	</sql>
+	<sql id="countSearch">
+		<if test="categoryNo != null">
+			<if test="categoryNo == 1">
+				and categoryNo = 1
+			</if>
+			<if test="categoryNo == 2">
+				and categoryNo = 2
+			</if>
+			<if test="categoryNo == 3">
+				and categoryNo = 3
+			</if>
+			<if test="categoryNo == 4">
+				and categoryNo = 4
+			</if>
+			<if test="categoryNo == 5">
+				and categoryNo = 5 
+			</if>
+			<if test="categoryNo == 6">
+				and categoryNo = 6
+			</if>
+		</if>
+		<if test="keyword != null">
+			and sname = #{keyword}
+		</if>
+	</sql>
+
+	<sql id="order">
+		<if test="orderType != null">
+			<if test="orderType == 'lastest'.toString()">
+				order by sno desc
+			</if>
+			<if test="orderType == 'sCount'.toString()">
+				order by scount desc
+			</if>
+			<if test="orderType == 'viewCount'.toString()">
+				order by viewcount desc
+			</if>
+			<if test="orderType == 'price'.toString()">
+				order by price asc
+			</if>
+			<if test="orderType == 'likeIt'.toString()">
+				order by likeit asc
+			</if>
+		</if>
+		<if test="orderType == null">
+			order by sno desc
+		</if>
+	</sql>
+
+	<select id="listSearch" resultType="org.helpme.domain.ServiceVO">
+		<![CDATA[  
+  			select d.* from(select row_number() over(
+  		]]>
+
+		<include refid="order"></include>
+  		
+  		<![CDATA[  
+  			) rnum, s.* from svc s
+  		]]>
+  		<include refid="search"></include>
+  		<![CDATA[  
+  			) d 
+  			where d.rnum between #{pageStart} and #{pageStart} * #{perPageNum}
+  		]]>
+
+		
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+		<![CDATA[  
+  		select count(sno) 
+  		from svc
+ 		 where sno > 0 
+		]]>
+
+		<include refid="countSearch"></include>
+	</select>
+
+	<update id="updateViewCount">
+		update svc set viewcount = viewcount +1 where sno =
+		#{sNo}
+	</update>
+
+	<select id="likeCheck" resultType="String">
+		select userId
+		from likeIt
+		where sno = #{sNo} and userId = #{userId}
+	</select>
+
+	<insert id="likeIt">
+		insert into likeit
+		values(#{sNo},#{userId})
+	</insert>
+
+	<update id="updateLikeIt">
+		update svc set likeIt = likeIt +1 where sno =
+		#{sNo}
+	</update>
+
+	<select id="purchaseCheck" resultType="String">
+		select userId
+		from deal
+		where sno = #{sNo} and userId = #{userId}
+	</select>
+
+	<insert id="purchase">
+		insert into deal(SNO,DPRICE,DDATE,USERID)
+		values(#{sNo},#{dPrice},#{dDate},#{userId})
+	</insert>
+
+	<update id="updatePurchase">
+		update svc set scount = scount +1 where sno =
+		#{sNo}
+	</update>
+
+	<insert id="detailAttach">
+		insert into svcattach(SNO,ATTNAME)
+		values(#{sNo},#{attName})
+	</insert>
+
+	<select id="getLastSNo" resultType="org.helpme.domain.ServiceVO">
+		select sno, rownum
+		from svc
+		where rownum = 1 order by sno desc
+	</select>
+
+	<select id="getAttach" resultType="String">
+		select attname from svcattach
+		where sno = #{sNo}
+	</select>
+	
+	<delete id="deleteDetail">
+		delete from svcattach where sno = #{sNo}
+	</delete>
+	
+	<select id="likeServiceCheck" resultType="Integer">
+		select sno from likeservice
+		where sno= #{sNo} and userId = #{userId} 
+	</select>
+	
+	<insert id="likeService">
+		insert into likeService
+		values(#{sNo},sysdate,#{userId})
+	</insert>
+	
+	<delete id="deleteLikeService">
+		delete from likeservice 
+		where sno = #{sNo} and userid= #{userId}
+	</delete>
+</mapper>

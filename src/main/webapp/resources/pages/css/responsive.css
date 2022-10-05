@@ -1,0 +1,367 @@
+@media screen and (min-width: 992px) and (max-width: 1199px) { 
+  	.edufair-slider-middle{
+		top: 32%;
+	}
+
+}
+@media screen and (min-width: 992px) { 
+	
+}
+@media screen and (max-width: 992px) { 
+	.col-md-2{padding-right:0px;}
+	.col-sm-4{padding-left:10px; padding-right:10px;}
+	.item_bg {height:600px;}
+	.edufair-nav {background: #000;}
+}
+@media screen and (min-width: 769px) and (max-width: 991px) { 
+	.edufair-slider-middle{
+		top: 32%;
+	}	
+}
+
+@media screen and (max-width: 821px) { 
+	.item_bg {height:500px;}
+}
+
+@media screen and (max-width: 992px) { 
+
+	.edufair-nav .navbar-right,
+	.online-course-1x .edufair-nav .navbar-right,
+	.online-course-2x .edufair-nav .navbar-right {
+		margin-right: 0;
+		background: #000;
+	}
+	.edufair-nav li.dropdown i,
+	.edufair-nav .navbar-nav > li > a, .edufair-nav .navbar-brand{
+		color: #fff;
+		transition: all 0.3s ease;
+	}
+	.edufair-nav li.dropdown:hover i,
+	.edufair-nav .navbar-nav > li > a:hover, .edufair-nav .navbar-brand{
+		color: #fff;
+	}
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+		border-color: transparent;
+	}
+
+	.edufair-nav .navbar-brand {
+		margin-left: -15px !important;
+		margin-top: -5px;
+	}
+	.edufair-slider-middle{
+		top: 12%;
+		left: -23%;
+		transform: none;
+	}
+	.edufair-single-caption h2 {
+		font-size: 25px;
+	}
+	.top-menu-right {
+		float: left;
+	}
+	.top-menu-right a{
+		margin-right: 15px;
+		margin-left: 0;
+	}
+	.about-university-img{
+		margin-top: 50px;
+	}
+	
+	
+	/*single page*/
+	.next-post{
+		text-align: left;
+	}
+	.next-post h4{
+		padding-top: 40px;
+	}
+	.blog-description-tag {
+		float: left;
+	}
+	.blog-description-tag ul li {
+		padding-left: 0;
+		padding-right: 10px;
+		padding-top: 20px;
+	}
+	
+	/* Single course */
+	.course-review {
+		padding-left: 0;
+		padding-top: 30px;
+		margin-left: 0;
+	}
+	.course-details-price strong{
+		float: left;
+		display: block;
+		margin-left: -15px;
+		margin-bottom: 40px;
+	}
+	.course-description-tab-right {
+		padding-left: 15px;
+	}
+	.course-description-tab-right ul{
+		margin-left: -5px;
+	}
+	.all-course {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.curriculum-tab{
+		padding-left: 0;
+	}
+	.online-course-2x .edufair-shop-1x .carousel-control, .online-course-1x .edufair-shop-1x .carousel-control, .online-course-2x .edufair-related-course-1x .carousel-control, .online-course-1x .edufair-related-course-1x .carousel-control, .single-course-1x .edufair-related-course-1x .carousel-control, .university-2x .edufair-shop-1x .carousel-control, .university-2x .university-course-1x .carousel-control, .university-1x .edufair-shop-1x .carousel-control, .university-1x .university-course-1x .carousel-control {
+		top: 20px;
+		margin-left: 88%;
+	}
+	.single-course-1x .edufair-related-course {
+		margin-bottom: 50px;
+	}
+	
+	/*blog-right-sidebar*/
+	.latest-post-right-sidebar {
+		margin-top: 50px;
+	}
+	
+	/* High School */
+	.high-school-1x .edufair-slider-middle {
+		top: -12%;
+	}
+	.kid-contact-top {
+		float: left;
+		margin-top: 30px;
+		margin-bottom: 10px;
+	}
+	.kid-nav {
+		margin-top: -5px;
+	}
+	.edufair-caption h2{
+		font-size: 45px;
+		padding-bottom: 20px;
+	}
+	.edufair-caption h4{
+		font-size: 20px;
+	}
+	.high-school-single-info{
+		margin-left: 30px;
+	}
+	.cta-right {
+		float: left;
+		margin-left: 30px;
+	}
+	.university-countdown-1x .school-overlay-image {
+		height: 650px !important;
+	}
+	.single-counter {
+		margin-top: 30px;
+	}
+	.hovereffect4 h2, .hovereffect4:hover h2{
+		display: none;
+	}
+	/* Kindergarten */
+	.testimonial-overlay-image{
+		height: 750px;
+	}
+	.countdown-overlay-image{
+		height: 1300px;
+	}
+	.countdown-single{
+		padding-right: 40px;
+		padding-left: 30px;
+		padding-bottom: 30px;
+		border-right: none;		
+	}
+	.edufair-subscription-1x{
+		margin-bottom: 0px;
+	}
+	.edufair-countdown-timer-1x .kid-header-title h4,
+	.edufair-countdown-timer-1x .kid-header-title h2,
+	.kid-header-title {
+		text-align: center;
+	}
+	.edufair-countdown-timer-1x .kid-header-title span.heading-divider {
+		margin-left: 0;
+	}
+	/* University one */
+	.university-2x .edufair-slider-middle,
+	.university-1x .edufair-slider-middle {
+		top: -32%;
+	}
+	.edufair-btn-larg-round, a.edufair-btn-larg-round{
+		padding: 7px 25px;
+	}
+	.university-1x .edufair-about-university a.edufair-course-text{
+		display: inline-block;
+		margin-bottom: 40px;
+	}
+	.edufair-slider-image{
+		height: 900px;
+		object-fit: cover;
+	}
+	.events-all-button {
+		float: left;
+		margin-top: 0 !important;
+		margin-bottom: 50px;
+	}
+	.edufair-testimonial-timer-1x .edufair-main-title::before {
+		left: 39%;
+	}
+	.single-events-image-1x {
+		margin-top: 40px;
+	}
+	
+	/* university two */
+	.university-2x .high-school-single-info{
+		margin-left: 0;
+	}
+	.university-2x .edufair-high-school-extra-features-1x .padding-top-large{
+		padding-top: 0;
+	}
+	.edufair-video-section-1x {
+		margin-top: 50px;
+	}
+	.university-2x .about-university h2 {
+		margin-top: 50px;
+	}
+	/* Online course one */
+	.online-course-new-middle{
+		top: 60%
+	}
+	.online-course-new-text h2{
+		font-size: 28px;
+	}
+	
+	/*footer*/
+	
+	.footer-info-left p{
+		margin-left: 15px;
+	}
+	.footer-info-right{
+		text-align: left;
+		margin-left: 15px;
+	}
+	
+	/* Service Page 설정 서비스 페이지 220829 */
+	
+	.online-category div:nth-child(even){
+		padding-right:10px;
+	}
+	.online-category div:nth-child(odd){
+		padding-left:10px;
+	}
+	.btn-regist-wrap{width:100%; display:flex; justify-content:space-around;}
+	.nav>li>a.service-detail-desc{padding-right:130px;}
+	
+}
+@media screen and (max-width: 730px) { 
+	
+}
+
+@media screen and (max-width: 665px) {
+	.online-course-2x .featured-category-img {
+	height: 100px;
+	width: 100px;
+	}
+
+.online-course-2x .single-featured-category:hover .featured-category-img{
+	height: 100px;
+	width: 100px;
+	}
+
+.online-course-2x .featured-category-img img {
+	max-width: 45px;
+	padding-top: 25px;
+	}
+
+.online-course-2x .course-header-menu {
+	background: #f5f5f5;
+	overflow: hidden;
+	padding: 20px;
+	margin-bottom: 50px;
+	}
+}
+@media screen and (max-width: 479px) { 
+	/*Shop*/
+	.shop-category {
+		float: left;
+	}
+	.edufair-btn-larg-round, a.edufair-btn-larg-round{
+		padding: 7px 25px;
+	}
+	.high-school-1x .edufair-slider-middle {
+		top: -4%;
+	}
+	.edufair-caption h2 {
+		font-size: 30px;
+	}
+		/* Kindergarten */
+	.testimonial-overlay-image{
+		height: 850px;
+	}
+	.edufair-testimonial-timer-1x .kid-header-title h2,
+	.edufair-countdown-timer-1x .kid-header-title h2 {
+		font-size: 32px;
+	}
+	.university-countdown-1x .edufair-main-title,
+	.edufair-subscription-title-1x h3,
+	.edufair-countdown {
+		font-size: 30px !important;
+	}
+	.university-countdown-1x  .countdown-single{
+		font-size: 25px;		
+	}
+	.university-countdown-1x a.edufair-course-text{
+		margin-top: 40px;
+	}
+	.online-course-2x .edufair-shop-1x .carousel-control, .online-course-1x .edufair-shop-1x .carousel-control, .online-course-2x .edufair-related-course-1x .carousel-control, .online-course-1x .edufair-related-course-1x .carousel-control, .single-course-1x .edufair-related-course-1x .carousel-control, .university-2x .edufair-shop-1x .carousel-control, .university-2x .university-course-1x .carousel-control, .university-1x .edufair-shop-1x .carousel-control, .university-1x .university-course-1x .carousel-control{
+		margin-left: 80%;
+	}
+	.testimonial-overlay-image{
+		height: 1000px;
+	}
+	.edufair-testimonial-timer-1x .edufair-main-title::before {
+		left: 32%;
+	}
+	
+	.edufair-video-section-1x {
+		margin-top: 50px;
+	}
+	.edufair-features,
+	.edufair-events-1x{
+		padding-top: 50px;
+	}
+	.edufair-testimonial-timer-1x{
+		margin-top: 0;
+	}
+	
+}
+@media screen and (max-width: 320px) {
+	.edufair-single-caption h2 {
+		font-size: 16px;
+	}
+	.edufair-single-breadcrumbs li a{
+		font-size: 12px;
+	}
+	.edufair-single-breadcrumbs .active {
+		font-size: 12px;
+	}
+	.edufair-caption h2{
+		font-size: 25px;
+	}
+	.online-course-2x .edufair-shop-1x .carousel-control, .online-course-1x .edufair-shop-1x .carousel-control, .online-course-2x .edufair-related-course-1x .carousel-control, .online-course-1x .edufair-related-course-1x .carousel-control, .single-course-1x .edufair-related-course-1x .carousel-control, .university-2x .edufair-shop-1x .carousel-control, .university-2x .university-course-1x .carousel-control, .university-1x .edufair-shop-1x .carousel-control, .university-1x .university-course-1x .carousel-control{
+		margin-left: 71%;
+		top: 3px !important;
+	}
+	.edufair-single-features h4{
+		font-size: 17px;
+	}
+	.online-course-2x .edufair-main-title {
+		font-size: 20px;
+	}
+	
+}
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+3

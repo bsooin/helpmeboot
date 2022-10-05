@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.helpme.mapper.MemberMapper">
+
+	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 
+		있습니다. -->
+	<select id="selectOne" resultType="org.helpme.domain.MemberVO">
+		select userId,
+		userPw,
+		userEmail,
+		userName,
+		phone,
+		gender,
+		address,
+		regDate,
+		sms,
+		accTerms,
+		userRank
+		from member where userId = #{userId}
+
+	</select>
+
+	<select id="select" resultType="org.helpme.domain.MemberVO">
+		select userId,
+		userPw,
+		userEmail,
+		userName,
+		phone,
+		gender,
+		address,
+		regDate,
+		sms,
+		accTerms,
+		userRank
+		from member
+		where userId = #{userId} and
+		userPw = = #{userPw}
+
+	</select>
+
+	<select id="login" resultType="org.helpme.domain.MemberVO">
+		select userId, userPw, userName
+		from
+		member where userId = #{userId} and userPw = #{userPw}
+	</select>
+
+	<update id="update">
+		update member set userEmail = #{userEmail,
+		jdbcType=VARCHAR}, userName =
+		#{userName, jdbcType=VARCHAR},
+		phone =
+		#{phone, jdbcType=VARCHAR} ,address = #{address, jdbcType=VARCHAR},
+		sms = #{sms, jdbcType=VARCHAR} where userId = #{userId}
+	</update>
+
+	<insert id="create">
+		insert into member
+		values(#{userId},#{userPw},#{userEmail}, #{userName},#{phone}
+		,#{gender},#{address}, sysdate, #{sms}, #{accTerms}, #{userRank} )
+	</insert>
+
+	<update id="keepLogin">
+		update member set sessionKey = #{sessionId},
+		sessionLimit = #{next} where
+		userId = #{userId}
+	</update>
+
+
+	<delete id="delete">
+		delete from member where userId = #{userId}
+	</delete>
+
+
+	<select id="idCheck" resultType="int"
+		parameterType="org.helpme.domain.MemberVO">
+		select count(*) from member where userId = #{userId}
+	</select>
+
+	<select id="pwCheck"  resultType="String"
+	parameterType="org.helpme.domain.MemberVO">
+		select userPw from member where userId = #{userId}
+	</select>
+
+	<update id="changePwd">
+		update member set userPw =  #{userPw, jdbcType=VARCHAR} where userId = #{userId}
+	</update>
+
+
+
+	<!-- index 사용 -->
+	<!-- Best Helper -->
+<!-- 		<select id="bestHelper" resultType="org.helpme.dto.ReviewDTO">
+	<![CDATA[  
+		select d.* from(select row_number() over(order by rating desc) 
+		rnum, s.* from review s) d 
+		where d.rnum < 9
+		]]>
+	</select>-->
+<select id="bestHelper" resultType="org.helpme.dto.ReviewDTO">
+    <![CDATA[
+        select * from (select *
+        from svc s
+        left outer join (SELECT DISTINCT sNo FROM review) r
+        on(s.sNo = r.sNo)
+        order by likeit desc) where rownum < 9
+        ]]>
+    </select>
+	
+
+	<!-- New Helper -->
+<select id="newHelper" resultType="org.helpme.domain.ServiceVO">
+	<![CDATA[  
+		select * from (select *
+		from svc 
+		order by sRegdate desc) where rownum < 9
+		]]>
+	</select>
+
+
+	<!-- 리뷰 더보기 -->
+	<select id="mainReview" resultType="org.helpme.dto.ReviewDTO">
+	<![CDATA[  
+		select * from (select *
+		from review r
+		left outer join svc s
+		on(r.sNo = s.sNo)
+		order by rRegDate desc) where rownum < 7
+		]]>
+	</select>
+
+
+	<!-- 계좌 정보 입력 -->
+	<insert id="accountCreate">
+		insert into ACCOUNTINFO
+		values(#{bankName},#{accountNo},#{userId} )
+	</insert>
+	
+		<!-- 계좌 정보 조회 -->
+	<select id="selectAccount" resultType="org.helpme.domain.AccountInfoVO">
+	select * 
+	from ACCOUNTINFO
+	where userId = #{userId}
+	</select>
+	
+	<!-- 계좌 정보 수정 -->
+	<update id="updateAccount">
+		update ACCOUNTINFO set bankName = #{bankName},
+		accountNo = #{accountNo} where
+		userId = #{userId}
+	</update>
+	
+	<select id="getAccount" resultType="Integer">
+    select count(*) from accountinfo where userid=
+    #{userId}
+    </select>
+
+
+</mapper>
