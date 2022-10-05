@@ -39,7 +39,7 @@ public class MypageController {
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 
 	// 이미지 가져오기
-	@Value("${uploadPath}")
+	@Value("$uploadPath")
 	private String uploadPath;
 
 	private MypageService service;
@@ -136,7 +136,7 @@ public class MypageController {
 
 	// 이미지 가져오기
 	@ResponseBody
-	@RequestMapping("/displayFile")
+	@RequestMapping("/mydisplayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
 
 		InputStream in = null;
