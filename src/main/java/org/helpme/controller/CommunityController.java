@@ -25,6 +25,7 @@ import java.util.UUID;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/board")
 public class CommunityController {
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 	
