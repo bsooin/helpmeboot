@@ -1,0 +1,130 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+		<!-- Start Footer -->
+		<footer class="edufair-footer-1x margin-top-large">		
+			
+			  <div class="edufair-footer-content ">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 edufair-footer-subscription">	
+								
+							</div>	
+							<div class="col-md-4 edufair-footer-address">	
+								<a href="#"><img src="<%=request.getContextPath()%>/resources/pages/images/main/logo_bottom.png" alt="Logo"></a><br>
+								
+									<p> <i class="fa fa-phone"></i>(00) 123 456 789 </p>				
+									<p> <i class="fa fa-envelope"></i>hello@edufair.com </p>								
+									<p> <i class="fa fa-map-marker"></i> 123 walton gorgia street,<br> west town hall, London, UK. </p>											
+							</div>
+							<div class="col-md-2">
+								<h5> Company </h5>
+								<ul>
+									<li><a href="#"> Help Center </a></li>				
+									<li><a href="#"> Student support </a></li>				
+									<li><a href="#"> Language Packs </a></li>				
+									<li><a href="#"> Privacy policy </a></li>				
+									<li><a href="#"> Become a Teacher </a></li>	
+								</ul>
+							</div>
+							
+							<div class="col-md-2">	
+								<h5> Useful Links </h5>
+								<ul>
+									<li><a href="#"> Help Center </a></li>				
+									<li><a href="#"> Student support </a></li>				
+									<li><a href="#"> Language Packs </a></li>				
+									<li><a href="#"> Privacy policy </a></li>				
+									<li><a href="#"> Become a Teacher </a></li>				
+								</ul>			
+							</div>
+							<div class="col-md-2">	
+								<h5> Support </h5>
+								<ul>
+									<li><a href="#"> Help Center </a></li>				
+									<li><a href="#"> Student support </a></li>				
+									<li><a href="#"> Language Packs </a></li>				
+									<li><a href="#"> Privacy policy </a></li>				
+									<li><a href="#"> Become a Teacher </a></li>				
+								</ul>			
+							</div>
+							<div class="col-md-2">	
+								<h5> Community </h5>
+								<ul>
+									<li><a href="#"> Help Center </a></li>				
+									<li><a href="#"> Student support </a></li>				
+									<li><a href="#"> Language Packs </a></li>				
+									<li><a href="#"> Privacy policy </a></li>				
+									<li><a href="#"> Become a Teacher </a></li>				
+								</ul>			
+							</div>					
+							
+							<div class="col-md-12 footer-info">	
+								<div class="row">	
+									<div class="col-md-6 footer-info-left">	
+										<p>Education WordPress Theme by Edufair. Powered by <a href="#"> BanyanTheme </a></p>
+									</div>			
+									<div class="col-md-6 footer-info-right">
+										<ul>
+											<li><a href="#"> <i class="fa fa-facebook"></i> </a></li>										
+											<li><a href="#"> <i class="fa fa-twitter"></i> </a></li>											
+											<li><a href="#"> <i class="fa fa-google"></i> </a></li>									
+											<li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>											
+										</ul>					
+									</div>					
+								</div>					
+							</div>					
+						</div>					
+					</div>			
+			  </div>		  
+		</footer>	
+		<!-- End Footer -->	
+	</div>
+
+		
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="<%=request.getContextPath()%>/resources/pages/js/bootstrap.min.js"></script>		
+	<!-- Preloader js -->
+    <script src="<%=request.getContextPath()%>/resources/pages/js/fakeLoader.min.js"></script>	
+	<!-- Masonry Portfolio Script -->
+    <script src='https://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js'></script>
+	<!-- Lightbox js -->
+	<script src="<%=request.getContextPath()%>/resources/pages/inc/lightbox/js/jquery.fancybox.pack.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/pages/inc/lightbox/js/lightbox.js"></script>
+	<!-- Wow js -->
+    <script src="<%=request.getContextPath()%>/resources/pages/js/wow.min.js"></script>
+	<!-- Counter Script -->
+	<script src="<%=request.getContextPath()%>/resources/pages/js/waypoints.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/pages/js/jquery.counterup.min.js"></script>
+	<!-- Scroll bottom to top -->
+	<script src="<%=request.getContextPath()%>/resources/pages/js/scrolltopcontrol.js"></script>	
+	<!-- Stiky menu -->
+	<script src="<%=request.getContextPath()%>/resources/pages/js/jquery.sticky.js"></script>	
+	<!-- Stiky Sidebar -->
+	<script src="<%=request.getContextPath()%>/resources/pages/js/theia-sticky-sidebar.min.js"></script>
+	
+	<!-- Custom script -->
+    <script src="<%=request.getContextPath()%>/resources/pages/js/custom.js"></script>
+    
+    <!-- Main Visial JS -->
+	<script src="<%=request.getContextPath()%>/resources/pages/js/main_visual.js"></script>
+	<!-- Typing JS -->
+	<script src="<%=request.getContextPath()%>//resourcespages/js/typing_script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <!-- Swiper JS -->
+   	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        direction: "vertical",
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+   
+  </body>
+</html>

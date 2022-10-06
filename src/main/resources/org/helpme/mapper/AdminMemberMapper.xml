@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.helpme.mapper.AdminMemberMapper">
+
+<!-- 로그인 
+  <select id="logincheck" resultType="org.helpme.domain.MemberVO">
+		select userId, userPw, userRank
+		from
+		member where userId = #{userId} 
+	</select> -->
+
+	<!-- 회원 목록 보기 -->
+	<select id="memberList" resultType="org.helpme.domain.MemberVO">
+        select userId,
+		userName,
+		phone,
+		userEmail,
+		userRank
+		from member
+		order by userId
+	</select>
+
+	<!-- 회원 등록 
+ 	<insert id="register">
+		insert into member
+		(userId,
+		userPw,
+		userEmail,
+		userName,
+		phone,
+		gender,
+		address,
+		regDate,
+		sms,
+		accTerms,
+		userRank)
+		
+		values (#{userId},#{userPw},#{userEmail}, #{userName},#{phone}
+		,#{gender},#{address}, sysdate, #{sms}, #{accTerms},  #{userRank} )
+	</insert>  -->
+ 
+ <!-- 회원 상세조회 -->
+  <select id="viewMember" resultType="org.helpme.domain.MemberVO">
+         select 
+        userId ,
+		userPw  ,
+		userEmail,
+		userName,
+		phone,
+		gender,
+		address,
+		regDate,
+		sms,
+		accTerms,
+		userRank
+		from member where userId = #{userId}
+   
+ </select>
+ 
+  <!-- 회원 수정 -->
+ <update id="updateMember">
+		UPDATE MEMBER 
+		SET 	
+		userId = #{userId},
+		userPw=#{userPw},
+		userEmail=#{userEmail},
+		userName=#{userName},
+		phone=#{phone},
+		address=#{address},
+		sms=#{sms},
+		userRank=#{userRank}
+		 where userId = #{userId}
+	</update>
+
+<!-- 회원 삭제 -->
+    <delete id="deleteMember">
+		delete from member where userId = #{userId}
+	</delete>
+
+<sql id="search">
+ <if test="searchType != null" > 
+   <if test="searchType == 't'.toString()">
+     and userId like '#{keyword}' 
+   </if>
+      </if>
+</sql>
+
+<!--
+<select id="listSearch" resultType="MemberVO">
+<![CDATA[  
+select  userId,
+		userPw,
+		userEmail,
+		userName,
+		phone,
+		gender,
+		address,
+		regDate,
+		sms,
+		accTerms,
+		userRank from
+(select rownum rnum,     
+         userId,
+		userPw,
+		userEmail,
+		userName,
+		phone,
+		gender,
+		address,
+		regDate,
+		sms,
+		accTerms,
+		userRank from 
+(select * from userId where userId > 0 
+]]>  
+
+  <include refid="search"></include>
+  
+<![CDATA[    
+order by userId desc))
+where rnum between #{pageStart}+1 and #{pageStart}+10
+]]> 
+
+ 
+</select>
+
+<select id="listSearchCount" resultType="String">
+<![CDATA[  
+  select count(userRank) 
+  from Notice 
+  where userRank > 
+]]>
+  <include refid="search"></include>
+ 
+</select>  
+    -->
+</mapper>

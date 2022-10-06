@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.helpme.mapper.MypageMapper">
+
+	<!-- 거래내역 보기 최근 본 서비스 내가 쓴 후기 1:1 문의 내역 보기 찜 목록 차단 목록 신고 목록 적립금 조회 -->
+
+	<!-- 회원 정보 조회 -->
+	<select id="selectId" resultType="org.helpme.domain.MemberVO">
+		select userId,
+		userPw,
+		userEmail,
+		userName,
+		phone,
+		gender,
+		address,
+		regDate,
+		sms,
+		accTerms,
+		userRank
+		from member where userId = #{userId}
+
+	</select>
+
+	<!-- 나의 거래내역 보기 <select id="selectMyDeal" resultType="org.helpme.domain.DealVO"> 
+		select dNo, sNo, dPrice, dDate from (select dNo, sNo, dPrice, dDate from(select 
+		* from deal order by dNo desc, dDate desc)) where userId = #{userId} </select> -->
+
+	<!-- deal 페이징 처리 -->
+
+	<sql id="search">
+		<if test="keyword != null">
+			and sname = #{keyword}
+		</if>
+		<if test="categoryNo != null">
+			<if test="categoryNo == 1">
+				and categoryNo = 1
+			</if>
+			<if test="categoryNo == 2">
+				and categoryNo = 2
+			</if>
+			<if test="categoryNo == 3">
+				and categoryNo = 3
+			</if>
+			<if test="categoryNo == 4">
+				and categoryNo = 4
+			</if>
+			<if test="categoryNo == 5">
+				and categoryNo = 5
+			</if>
+			<if test="categoryNo == 6">
+				and categoryNo = 6
+			</if>
+		</if>
+	</sql>
+
+	<select id="listCriteria" resultType="org.helpme.dto.DealDTO">
+
+		select *
+		from deal d
+		left
+		outer join svc s
+		on(d.sNo = s.sNo)
+		where
+		(d.userId = #{userId})
+		order by
+		dDate desc
+
+
+	</select>
+
+
+	<select id="listSearchCount" resultType="int">
+
+		select count(dNo)
+		from
+		deal
+		where userId = #{userId}
+
+	</select>
+
+	<!-- deal 추가 -->
+	<insert id="dealRegist">
+		insert into deal
+		values(#{dNo},#{sNo},#{dPrice},sysdate,#{userId})
+	</insert>
+
+
+
+	<!-- 최근 본 서비스 -->
+	<select id="listLatestCriteria"
+		resultType="org.helpme.domain.ServiceVO">
+		select
+		*
+		from svc where sNo = #{sNo}
+	</select>
+
+	<select id="listLatestSearchCount" resultType="int">
+		select count(sno)
+		from svc
+		where sno > 0
+
+	</select>
+
+
+	<!-- 내가 쓴 후기 <select id="selectMyReview" resultType="org.helpme.domain.ReviewVO"> 
+		select rBoardId, sNo, rTitle, rContent, rRegDate, rating, likeCheck from 
+		review where userId = #{userId} order by rBoardId desc, rRegDate desc </select> -->
+
+	<!-- 내가 쓴 후기 페이징 -->
+	<select id="listReviewCriteria"
+		resultType="org.helpme.dto.ReviewDTO">
+
+		select *
+		from review r
+		left outer join svc s
+		on(r.sNo = s.sNo)
+		where
+		(r.userId = #{userId})
+		order by rRegDate desc
+
+	</select>
+
+
+	<select id="listReviewSearchCount" resultType="int">
+
+		select
+		count(rBoardId)
+		from
+		review
+		where userId = #{userId}
+
+	</select>
+
+
+
+	<!-- 1:1 문의 내역 보기 -->
+
+<!-- 	<select id="selectMyQna" resultType="org.helpme.domain.QnaVO">
+		select
+		qnaNo,
+		qnaTitle,
+		qnaCon,
+		qnaDate
+		from qna where userId = #{userId}
+		order by qnaNo desc,
+		qnaDate desc
+	</select> -->
+
+
+	<!-- 찜 목록 페이징 -->
+	<select id="listLikeCriteria"
+		resultType="org.helpme.dto.LikeserviceDTO">
+
+		select
+		s.sno,s.sname,s.scon,s.scon,s.price
+		,l.likedate,s.sAttach,s.sCount,
+		s.viewCount, s.likeit
+
+		from likeservice l
+		left outer join svc s
+		on(l.sNo =
+		s.sNo)
+		where (l.userId = #{userId})
+		order by likeDate desc
+
+	</select>
+
+
+	<select id="listLikeSearchCount" resultType="int">
+
+		select
+		count(sNo)
+		from
+		likeservice
+		where userId = #{userId}
+
+	</select>
+
+	<!-- 찜 목록에 있는 sNo로 선택해서 그 sNo의 정보를 불러오기 -->
+	<select id="selectMyLikeService"
+		resultType="org.helpme.domain.ServiceVO">
+		select
+		sName,
+		categoryNo,
+		price,
+		sCon
+		from svc where sNo =
+		#{sNo}
+	</select>
+
+
+
+
+	<!-- 적립금 조회 -->
+	<select id="selectMyPoint"
+		resultType="org.helpme.domain.PointVO">
+		select
+		amount,
+		validDate
+		from point where userId = #{userId}
+	</select>
+
+
+
+</mapper>
