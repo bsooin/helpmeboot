@@ -81,14 +81,14 @@ table.type1 td {
 
 	<!--  메인 박스 -->
 	<!-- Start edufair features -->
-
+<!--
 <c:if test="${member == null}">
 	<script>
 		alert("로그인 후 이용해 주세요.");
 		location.href = "/main/login";
 	</script>
 </c:if> 
-	
+	 -->
 	
   <!-- iamport.payment.js -->
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
