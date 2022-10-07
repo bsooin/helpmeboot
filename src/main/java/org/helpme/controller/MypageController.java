@@ -34,15 +34,16 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/my/*")
 public class MypageController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 
 	// 이미지 가져오기
-	@Value("uploadPath")
-	private String uploadPath;
 
-	private MypageService service;
+	private final String uploadPath = "C:\\team2";
+
+	private final MypageService service;
 
 	/*
 	 * 거래내역 보기 최근 본 서비스 내가 쓴 후기 1:1 문의 내역 보기 찜 목록 차단 목록 신고 목록 적립금 조회

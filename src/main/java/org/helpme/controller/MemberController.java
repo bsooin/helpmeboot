@@ -40,11 +40,11 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	// 이미지 가져오기
-	@Value("uploadPath")
-	private String uploadPath;
+
+	private final String uploadPath = "C:\\team2";
 	
 
-	private MemberService service;
+	private final MemberService service;
 
 	@GetMapping("/login")
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto,HttpServletRequest request) {

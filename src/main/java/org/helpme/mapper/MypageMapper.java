@@ -1,6 +1,7 @@
 package org.helpme.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.helpme.domain.MemberVO;
 import org.helpme.domain.MypageCriteria;
 import org.helpme.domain.PointVO;

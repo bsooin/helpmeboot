@@ -44,8 +44,7 @@ public class ServiceController {
 
     private static final Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
-    @Value("uploadPath")
-    private String uploadPath ;
+    private final String uploadPath = "C:\\team2";
 
     private final ServiceService serviceS;
 
