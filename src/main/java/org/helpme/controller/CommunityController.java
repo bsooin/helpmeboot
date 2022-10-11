@@ -32,8 +32,7 @@ public class CommunityController {
 	@Autowired
 	private CommunityService CommunityService;
 
-	@Value("uploadPath")
-	private String uploadPath;
+	private final String uploadPath = "C:\\team2";
 	
 	// 게시글 작성
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
