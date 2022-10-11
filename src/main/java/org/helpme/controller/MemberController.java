@@ -34,26 +34,27 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/main/*")
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	// 이미지 가져오기
-	@Value("uploadPath")
-	private String uploadPath;
-	
 
-	private MemberService service;
+	private final String uploadPath = "C:\\team2";
+
+
+	private final MemberService service;
 
 	@GetMapping("/login")
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto,HttpServletRequest request) {
 		logger.info("// /main/login");
-		
+
 		String referer = request.getHeader("Referer");
-		
+
 		if(!referer.equals("http://localhost:8080/main/login")&&
 				!referer.equals("http://localhost:8080/main/register")) {
-	    request.getSession().setAttribute("referer", referer);
+			request.getSession().setAttribute("referer", referer);
 		}
 		if(referer.equals("http://localhost:8080/main/register")) {
 			request.getSession().setAttribute("referer", "http://localhost:8080/main/index");
@@ -65,26 +66,26 @@ public class MemberController {
 	public String index(@ModelAttribute("cri") Criteria cri, Model model) throws Exception {
 		logger.info(cri.toString());
 		// index 메인 
-		
+
 		// bestHelper
 		List<ReviewDTO> best = service.bestHelper();
 		while(best.size()!=8) {
-				ReviewDTO r = new ReviewDTO();
-				r.setsAttach("basic.jpg");
-				r.setsName("서비스 없음");
-				r.setRating(1);
-				best.add(r);
-			
+			ReviewDTO r = new ReviewDTO();
+			r.setsAttach("basic.jpg");
+			r.setsName("서비스 없음");
+			r.setRating(1);
+			best.add(r);
+
 		}
 		model.addAttribute("best", best);
-		
+
 		PageMaker bestpageMaker = new PageMaker();
 		bestpageMaker.setCri(cri);
 
 		bestpageMaker.setTotalCount(8);
 
 		model.addAttribute("bestpageMaker", bestpageMaker);
-		
+
 		// New Helper
 		List<ServiceVO> newhelper = service.newHelper();
 		while(newhelper.size()!=8) {
@@ -92,14 +93,14 @@ public class MemberController {
 			s.setSAttach("basic.jpg");
 			s.setSName("서비스 없음");
 			newhelper.add(s);
-		
+
 		}
 		model.addAttribute("newhelper", newhelper);
-		
+
 		// 리뷰 
 		List<ReviewDTO> review = service.mainReview();
-		model.addAttribute("review", review); 
-		
+		model.addAttribute("review", review);
+
 		return "/main/index";
 	}
 
@@ -107,19 +108,19 @@ public class MemberController {
 	public String indexPost(Model model) throws Exception {
 
 		// index 메인 
-		
+
 		// bestHelper
 		List<ReviewDTO> best = service.bestHelper();
 		model.addAttribute("best", best);
-		
+
 		// New Helper
 		List<ServiceVO> newhelper = service.newHelper();
 		model.addAttribute("newhelper", newhelper);
-		
+
 		// 리뷰 
 		List<ReviewDTO> review = service.mainReview();
-		model.addAttribute("review", review); 
-		
+		model.addAttribute("review", review);
+
 		return "/main/index";
 	}
 
@@ -128,25 +129,25 @@ public class MemberController {
 	@PostMapping("/login")
 	public String loginPOST(LoginDTO dto, HttpServletRequest request, HttpSession session, Model model, RedirectAttributes rttr)
 			throws Exception {
-		
-		 session = request.getSession();
-		 MemberVO memberVO = service.login(dto);
-		 	 
-		 if (memberVO == null) {
+
+		session = request.getSession();
+		MemberVO memberVO = service.login(dto);
+
+		if (memberVO == null) {
 			session.setAttribute("member", null);
-		    rttr.addFlashAttribute("msg", false);
+			rttr.addFlashAttribute("msg", false);
 			return "redirect:/main/login";
-			}
-		 else {
-			 session.setAttribute("member", memberVO);
-			 // userId 세션 추가 
-			 session.setAttribute("userId", memberVO.getUserId());
-//			 return "redirect:/main/index";
-			 String referer = (String)session.getAttribute("referer");
-			 return "redirect:"+ referer;
-		 }
-		 
 		}
+		else {
+			session.setAttribute("member", memberVO);
+			// userId 세션 추가
+			session.setAttribute("userId", memberVO.getUserId());
+//			 return "redirect:/main/index";
+			String referer = (String)session.getAttribute("referer");
+			return "redirect:"+ referer;
+		}
+
+	}
 
 	@ResponseBody
 	@PostMapping("/idCheck")
@@ -156,7 +157,7 @@ public class MemberController {
 
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			RedirectAttributes rttr) throws Exception {
+						 RedirectAttributes rttr) throws Exception {
 
 		Object obj = session.getAttribute("member");
 
@@ -167,7 +168,7 @@ public class MemberController {
 			session.invalidate();
 
 		}
-		String referer = request.getHeader("Referer");	
+		String referer = request.getHeader("Referer");
 		return "redirect:"+referer;
 	}
 
@@ -178,23 +179,23 @@ public class MemberController {
 
 	@PostMapping("/register")
 	public String register(MemberVO member, String userId) throws Exception {
-		
+
 		int idResult = service.idCheck(userId);
 
-        try {
-            if (idResult == 1) {
-                return "/main/register";
-            } else if(idResult == 0){
-                service.create(member);
-                logger.info("register success");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException();
-        }
+		try {
+			if (idResult == 1) {
+				return "/main/register";
+			} else if(idResult == 0){
+				service.create(member);
+				logger.info("register success");
+			}
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
 
 		return "redirect:/main/login";
 	}
-	
+
 	@GetMapping("/changePwd")
 	public String changePwd() throws Exception{
 		return "/main/changePwd";
@@ -203,40 +204,40 @@ public class MemberController {
 	@PostMapping("/pwCheck")
 	@ResponseBody
 	public int pwCheck(MemberVO memberVO, Password password)  throws Exception{
-		
+
 		String userPw = service.pwCheck(memberVO.getUserId());
 		String currentPw = password.getCurrentPw();
-		
+
 		logger.info("userPw ="+userPw);
 		logger.info("currentPw="+currentPw);
-		
+
 		if( !(userPw.equals(currentPw))) {
 			return 0;
 		}
-		    return 1;
+		return 1;
 	}
-	
+
 	@PostMapping("/changePwd")
 	public String changePwd(Password password, String userId, RedirectAttributes rttr, HttpSession session) throws Exception{
-				
+
 		String newPw = password.getNewPw();
-		
+
 		service.changePwd(userId, newPw);
-		
+
 		session.invalidate();
 		rttr.addFlashAttribute("msg", "비밀번호 변경이 완료되었습니다. 다시 로그인해주세요.");
-		
+
 		return "/main/login";
 	}
-	
-	
+
+
 	/*
 	 * @RequestMapping(value = "/sendMail", method = RequestMethod.POST) public
 	 * String sendMail (HttpServletRequest request, HttpServletResponse response) {
 	 * String email = request.getParameter("userEmail");
-	 * 
+	 *
 	 * service.sendMail();
-	 * 
+	 *
 	 * return "main/searchPwd"; }
 	 */
 
@@ -244,59 +245,59 @@ public class MemberController {
 
 	@GetMapping("/modify")
 	public void modify(HttpServletRequest request, RedirectAttributes rttr, Model model) throws Exception {
-		 
+
 		MemberVO login = (MemberVO) request.getSession().getAttribute("member");
-			
+
 		if (login != null) {
 			String userId = login.getUserId();
 			MemberVO memberVO = service.selectOne(userId);
 			model.addAttribute("vo", memberVO);
-			
+
 			AccountInfoVO accountVO = service.selectAccount(userId);
-			
+
 			model.addAttribute("accountVO", accountVO);
 			//return "redirect:/main/modify";
 		}else {
 			model.addAttribute("member", null);
 		}
 
-		
-		
+
+
 	}
 
 	@PostMapping("/modify")
 	public String modify(MemberVO vo, AccountInfoVO accountVO, RedirectAttributes rttr) throws Exception {
-		
-		service.update(vo);
-		
-		if(accountVO.getAccountNo() != null && accountVO.getBankName()!=null) {
-            if(service.getAccount(accountVO)) {
-                service.updateAccount(accountVO);
-            }else {
-                service.accountCreate(accountVO);
 
-            }
+		service.update(vo);
+
+		if(accountVO.getAccountNo() != null && accountVO.getBankName()!=null) {
+			if(service.getAccount(accountVO)) {
+				service.updateAccount(accountVO);
+			}else {
+				service.accountCreate(accountVO);
+
+			}
 		}
-		
+
 		rttr.addFlashAttribute("vo", vo);
-	
+
 
 		return "redirect:/main/modify";
 	}
 
-	
+
 
 	@GetMapping("/deleteId")
 	public String deleteId(@RequestParam("userId") String userId, RedirectAttributes rttr,  HttpSession session) throws Exception {
 		service.delete(userId);
 		session.invalidate();
-		
+
 		rttr.addFlashAttribute("msg", "비밀번호 변경이 완료되었습니다. 다시 로그인해주세요.");
-		
+
 		return "/main/login";
 	}
-	
-	
+
+
 
 	// 이미지 가져오기
 	@ResponseBody
@@ -338,7 +339,7 @@ public class MemberController {
 		}
 		return entity;
 	}
-	
+
 	@GetMapping("/findpw")
 	public void findPwGET() throws Exception{
 	}
@@ -349,7 +350,7 @@ public class MemberController {
 		service.findPw(response, member);
 	}
 
-	
+
 }
 
 	
