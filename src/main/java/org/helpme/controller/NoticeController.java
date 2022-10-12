@@ -66,7 +66,7 @@ public class NoticeController {
 	}
 
 	@GetMapping("/modify")
-	public void modifyGET(int noticeId,@ModelAttribute("cri") SearchCriteria cri,  Model model) throws Exception {
+	public void modifyGET(int noticeId, @ModelAttribute("cri") SearchCriteria cri,  Model model) throws Exception {
 
 		model.addAttribute(service.read(noticeId));
 	}
@@ -101,6 +101,7 @@ public class NoticeController {
 
 		logger.info("regist post ...........");
 		logger.info(notice.toString());
+
 
 		service.create(notice);
 

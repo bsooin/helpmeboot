@@ -25,7 +25,7 @@ public class ReplyController {
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 	
 
-	private ReplyService ReplyService;
+	private final ReplyService ReplyService;
 	
 	// 댓글 작성
 	@PostMapping("/replyWrite")
@@ -33,6 +33,7 @@ public class ReplyController {
 		ResponseEntity<String> entity = null;
 
 		try {
+
 			ReplyService.replywrite(ReplyVO);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
@@ -47,7 +48,7 @@ public class ReplyController {
 	public ResponseEntity<List<ReplyVO>> replylist(@PathVariable("cBoardId") Integer cBoardId) {
 		ResponseEntity<List<ReplyVO>> entity = null;
 		try {
-			
+
 			entity = new ResponseEntity<>(ReplyService.replylist(cBoardId), HttpStatus.OK);
 			
 		} catch (Exception e) {

@@ -49,8 +49,9 @@ public class CommunityController {
 		logger.info(CommunityVO.toString());
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
-		
-		if (file != null && checkFile(file)) {
+
+
+		if (!file.getOriginalFilename().equals("") && checkFile(file)) {
 			CommunityVO.setcFileName(uploadFile(file.getOriginalFilename(), file.getBytes()));
 		} else {
 			CommunityVO.setcFileName("");
@@ -61,6 +62,7 @@ public class CommunityController {
 		}else {
 			CommunityVO.setUserId("userId1");
 		}
+
 		CommunityService.write(CommunityVO);
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
@@ -114,7 +116,7 @@ public class CommunityController {
 		CommunityVO CommunityVO,@RequestParam(name = "attachFile", required = false) MultipartFile file,
 		RedirectAttributes rttr) throws Exception {
 			logger.info("mod post............");
-			if (file != null && checkFile(file)) {
+			if (!file.getOriginalFilename().equals("") && checkFile(file)) {
 				CommunityVO.setcFileName(uploadFile(file.getOriginalFilename(), file.getBytes()));
 			} else {
 				CommunityVO.setcFileName("");
