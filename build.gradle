@@ -27,7 +27,7 @@ dependencies {
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
-	implementation group: 'org.apache.commons', name: 'commons-email', version: '1.4'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

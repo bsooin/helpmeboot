@@ -14,7 +14,7 @@
 
 			<div class="card-body card-block">
 				<form method="post" enctype="multipart/form-data"
-					class="form-horizontal">
+					class="form-horizontal" accept-charset="UTF-8">
 
 
 					<div class="row form-group">
