@@ -96,6 +96,7 @@ public class MypageController {
 		MypagePageMaker pageMaker = new MypagePageMaker();
 		pageMaker.setCri(cri);
 
+		cri.setUserId(login.getUserId());
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 
 		model.addAttribute("pageMaker", pageMaker);
@@ -122,6 +123,7 @@ public class MypageController {
 		MypagePageMaker pageMaker = new MypagePageMaker();
 		pageMaker.setCri(cri);
 
+		cri.setUserId(login.getUserId());
 		pageMaker.setTotalCount(service.listReviewSearchCount(cri));
 
 		model.addAttribute("pageMaker", pageMaker);
@@ -193,6 +195,7 @@ public class MypageController {
 		MypagePageMaker pageMaker = new MypagePageMaker();
 		pageMaker.setCri(cri);
 
+		cri.setUserId(login.getUserId());
 		pageMaker.setTotalCount(service.listLikeSearchCount(cri));
 
 		model.addAttribute("pageMaker", pageMaker);

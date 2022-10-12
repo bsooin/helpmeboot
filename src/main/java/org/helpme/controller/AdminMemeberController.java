@@ -21,14 +21,13 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-
 @RequestMapping(value = "/admin/*")
 public class AdminMemeberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminMemeberController.class);
 
 
-	private AdminMemberService adminMemberService;
+	private final AdminMemberService adminMemberService;
 
 	// 관리자 화면
 
@@ -86,6 +85,7 @@ public class AdminMemeberController {
 	@PostMapping("/updateMember")
 	public String  updateMemberPOST(MemberVO vo , HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post member modify");
+		System.out.println(vo);
 
 		adminMemberService.updateMember(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");

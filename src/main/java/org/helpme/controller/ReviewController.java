@@ -22,10 +22,11 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/review/*")
 public class ReviewController {
 
 
-    private ReviewService service;
+    private final ReviewService service;
 
     @PostMapping("")
     public ResponseEntity<String> register(@RequestBody ReviewVO reviewVO, HttpServletRequest request) {

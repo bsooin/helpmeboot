@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 게시글 작성 -->
 	<insert id="write">
-		insert into community (cBoardId, cBoardTitle, cBoardCon, userId, cRegdate, cFileName)
-		values(#{cBoardId}, #{cBoardTitle}, #{cBoardCon}, #{userId}, sysdate, #{cFileName})
+		insert into community (cBoardTitle, cBoardCon, userId, cRegdate, cFileName)
+		values(#{cBoardTitle}, #{cBoardCon}, #{userId}, sysdate, #{cFileName})
 	</insert>
 	
 	<!-- 게시글 보기 -->
