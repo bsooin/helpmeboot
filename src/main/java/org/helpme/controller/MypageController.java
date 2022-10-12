@@ -53,16 +53,16 @@ public class MypageController {
 
 
 	@GetMapping("/mypage") public String
-  modify(HttpServletRequest request, Model model,HttpSession session) throws Exception {
+	modify(HttpServletRequest request, Model model,HttpSession session) throws Exception {
 
-  
-	  MemberVO login = (MemberVO) request.getSession().getAttribute("member");
+
+		MemberVO login = (MemberVO) request.getSession().getAttribute("member");
 		if (login != null) {
 			String userId = login.getUserId();
-			session = request.getSession();	
+			session = request.getSession();
 			MemberVO memberVO = service.selectId(userId);
 			model.addAttribute("member", memberVO);
-			
+
 			PointVO pointVO = service.selectMyPoint(userId);
 			model.addAttribute("point", pointVO);
 
@@ -74,8 +74,8 @@ public class MypageController {
 			return "/my/mypage";
 		}
 
-		
-  }
+
+	}
 
 
 	// 거래 내역 보기 -페이징
@@ -85,21 +85,21 @@ public class MypageController {
 			throws Exception {
 
 		logger.info(cri.toString());
-		
+
 		MemberVO login = (MemberVO) request.getSession().getAttribute("member");
 
 		if (login != null) {
 			String userId = login.getUserId();
-		List<?> deal = service.listCriteria(userId);
-		model.addAttribute("deal", deal);
+			List<?> deal = service.listCriteria(userId);
+			model.addAttribute("deal", deal);
 
-		MypagePageMaker pageMaker = new MypagePageMaker();
-		pageMaker.setCri(cri);
+			MypagePageMaker pageMaker = new MypagePageMaker();
+			pageMaker.setCri(cri);
 
-		cri.setUserId(login.getUserId());
-		pageMaker.setTotalCount(service.listSearchCount(cri));
+			cri.setUserId(login.getUserId());
+			pageMaker.setTotalCount(service.listSearchCount(cri));
 
-		model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("pageMaker", pageMaker);
 		}else {
 			model.addAttribute("member", null);
 		}
@@ -111,25 +111,26 @@ public class MypageController {
 	public void myreview(@ModelAttribute("cri") MypageCriteria cri, HttpServletRequest request,Model model)
 			throws Exception {
 		logger.info(cri.toString());
-		
+
 		MemberVO login = (MemberVO) request.getSession().getAttribute("member");
-		
+
 		if (login != null) {
 			String userId = login.getUserId();
-		
-		List<?> review = service.listReviewCriteria(userId);
-		model.addAttribute("review", review);
 
-		MypagePageMaker pageMaker = new MypagePageMaker();
-		pageMaker.setCri(cri);
+			List<?> review = service.listReviewCriteria(userId);
+			model.addAttribute("review", review);
 
-		pageMaker.setTotalCount(service.listReviewSearchCount(cri));
+			MypagePageMaker pageMaker = new MypagePageMaker();
+			pageMaker.setCri(cri);
 
-		model.addAttribute("pageMaker", pageMaker);
-		
-		ServiceService serviceS;
-		
-		
+			cri.setUserId(login.getUserId());
+			pageMaker.setTotalCount(service.listReviewSearchCount(cri));
+
+			model.addAttribute("pageMaker", pageMaker);
+
+			ServiceService serviceS;
+
+
 		}else {
 			model.addAttribute("member", null);
 		}
@@ -182,22 +183,22 @@ public class MypageController {
 	public void likelist(@ModelAttribute("cri") MypageCriteria cri, HttpServletRequest request,Model model)
 			throws Exception {
 		logger.info(cri.toString());
-		
+
 		MemberVO login = (MemberVO) request.getSession().getAttribute("member");
-		
+
 		if (login != null) {
-		
+
 			String userId = login.getUserId();
-		List<?> likelist = service.listLikeCriteria(userId);
-		model.addAttribute("like", likelist);
+			List<?> likelist = service.listLikeCriteria(userId);
+			model.addAttribute("like", likelist);
 
-		MypagePageMaker pageMaker = new MypagePageMaker();
-		pageMaker.setCri(cri);
+			MypagePageMaker pageMaker = new MypagePageMaker();
+			pageMaker.setCri(cri);
 
-		cri.setUserId(login.getUserId());
-		pageMaker.setTotalCount(service.listLikeSearchCount(cri));
+			cri.setUserId(login.getUserId());
+			pageMaker.setTotalCount(service.listLikeSearchCount(cri));
 
-		model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("pageMaker", pageMaker);
 		}else {
 			model.addAttribute("member", null);
 		}
@@ -207,10 +208,10 @@ public class MypageController {
 	// 적립금 조회
 	@GetMapping("/mypoint")
 	public void mypoint(HttpServletRequest request, Model model) throws Exception {
-		
+
 		MemberVO login = (MemberVO) request.getSession().getAttribute("member");
 		String userId = login.getUserId();
-		
+
 		PointVO pointVO = service.selectMyPoint(userId);
 		model.addAttribute("point", pointVO);
 
@@ -222,46 +223,46 @@ public class MypageController {
 	public void latestservice(@ModelAttribute("cri") MypageCriteria cri,HttpServletRequest request, Model model) throws Exception {
 
 		MemberVO login = (MemberVO) request.getSession().getAttribute("member");
-		
+
 		if (login != null) {
 			String userId = login.getUserId();
-		try {
-			ArrayList<Integer> list = (ArrayList)request.getSession().getAttribute("sNo");
-			ArrayList<ServiceVO> result = null;
-			if(list!=null) {
-				result = new ArrayList<>();
-				for(Integer i: list) {
-					ServiceVO serviceOne = service.listLatestCriteria(i);
-					result.add(serviceOne);
+			try {
+				ArrayList<Integer> list = (ArrayList)request.getSession().getAttribute("sNo");
+				ArrayList<ServiceVO> result = null;
+				if(list!=null) {
+					result = new ArrayList<>();
+					for(Integer i: list) {
+						ServiceVO serviceOne = service.listLatestCriteria(i);
+						result.add(serviceOne);
+					}
 				}
+
+				model.addAttribute("list", result);
+
+				MypagePageMaker pageMaker = new MypagePageMaker();
+				pageMaker.setCri(cri);
+
+				pageMaker.setTotalCount(service.listLatestSearchCount(cri));
+
+				model.addAttribute("pageMaker", pageMaker);
+
+
+				MemberVO memberVO = service.selectId(userId);
+				model.addAttribute("member", memberVO);
+
+
+			} catch (Exception e) {
+				List<?> list = null;
+				model.addAttribute("list", list);
+
 			}
-			
-			model.addAttribute("list", result);
-
-			MypagePageMaker pageMaker = new MypagePageMaker();
-			pageMaker.setCri(cri);
-
-			pageMaker.setTotalCount(service.listLatestSearchCount(cri));
-
-			model.addAttribute("pageMaker", pageMaker);
-			
-			
-			MemberVO memberVO = service.selectId(userId);
-			model.addAttribute("member", memberVO);
-
-
-		} catch (Exception e) {
-			List<?> list = null;
-			model.addAttribute("list", list);
-
-		}
 		}else {
 			model.addAttribute("member", null);
 		}
 
-		
-		
-		
+
+
+
 	}
 
 }

@@ -3067,10 +3067,11 @@ a.edufair-shop-cart:hover {
 .instructors-tab {
 	padding: 50px 0 20px 0;
 	border-bottom: 1px solid #f1f1f1;
+	color: #262626;
 }
 
 .instructors-tab .media {
-	
+
 }
 
 .instructors-tab .media-left img {
@@ -3083,7 +3084,7 @@ a.edufair-shop-cart:hover {
 }
 
 .instructors-tab .media-body {
-	
+
 }
 
 .instructors-tab .media-body a h4 {
@@ -3113,7 +3114,7 @@ a.edufair-shop-cart:hover {
 }
 
 .review-tab {
-	
+
 }
 
 .review-tab h2 {
@@ -3149,7 +3150,7 @@ a.edufair-shop-cart:hover {
 }
 
 .review-tab-top  .media-left span {
-	
+
 }
 
 .review-tab-top  .media-left span i {
@@ -3161,7 +3162,7 @@ a.edufair-shop-cart:hover {
 }
 
 .review-progress-bar {
-	
+
 }
 
 .single-progress-bar {
@@ -3382,7 +3383,7 @@ a.edufair-related-course-text {
 }
 
 .blog-banner {
-	
+
 }
 
 .blog-banner img {
@@ -3489,12 +3490,13 @@ a.edufair-related-course-text {
 .blog-description-tag ul li a {
 	font-size: 14px;
 	font-weight: 700;
-	color: #262626;
-	transition: all .3s ease;;
+	color: #fff;
+	transition: all .3s ease;
+	font-style: initial;
 }
 
 .blog-description-tag ul li a:hover {
-	color: #22b9ac;
+	color: #fff;
 }
 
 /* blog Right Sidebar */
@@ -3781,7 +3783,7 @@ a.latest-post-read-more {
 
 /* Edufair Comment box */
 .edufair-comment-body {
-	
+
 }
 
 .edufair-comment-body h2 {
@@ -3963,7 +3965,7 @@ a.latest-post-read-more {
 }
 
 .edufair-pagination {
-	
+
 }
 
 .edufair-pagination>li.active>a:hover, .edufair-pagination>li.active>a {
@@ -4002,7 +4004,7 @@ a.latest-post-read-more {
 		Edufair Blog Right Sidebar
 **********************************************/
 .blog-content {
-	
+
 }
 
 .blog-content span {
@@ -4063,7 +4065,7 @@ a.blog-right-sidebar-link h2:hover {
 }
 
 .edufair-about-university p {
-	
+
 }
 
 .edufair-about-university a.edufair-course-text {
@@ -4082,12 +4084,12 @@ a.blog-right-sidebar-link h2:hover {
 }
 
 .about-university-img {
-	
+
 }
 
 /* university Countdown Timer */
 .university-countdown-1x {
-	
+
 }
 
 .university-countdown-1x .countdown-overlay-middle {
@@ -4095,7 +4097,7 @@ a.blog-right-sidebar-link h2:hover {
 }
 
 .university-countdown {
-	
+
 }
 
 .university-countdown-1x .countdown-overlay-image {
@@ -4176,15 +4178,15 @@ a.blog-right-sidebar-link h2:hover {
 }
 
 .top-menu-left {
-	
+
 }
 
 .top-menu-left .media {
-	
+
 }
 
 .top-menu-left .media-left {
-	
+
 }
 
 .kid-top-menu .kid-icon-2x i, .kid-top-menu .kid-icon-1x i {
@@ -4461,7 +4463,7 @@ span.edufair-mark, .edufair-pricing-box .pricing-box span.edufair-mark {
 	font-family: 'Pretendard';
 }
 /*****************************************
-		High School 
+		High School
 ******************************************/
 
 /* High School Features */
@@ -4486,7 +4488,7 @@ span.edufair-mark, .edufair-pricing-box .pricing-box span.edufair-mark {
 }
 
 .high-school-single-features .media {
-	
+
 }
 
 .high-school-single-features .media-left {
@@ -4501,7 +4503,7 @@ span.edufair-mark, .edufair-pricing-box .pricing-box span.edufair-mark {
 }
 
 .high-school-single-features .media-body {
-	
+
 }
 
 .high-school-single-features .media-body a h4 {
@@ -4541,7 +4543,7 @@ span.edufair-mark, .edufair-pricing-box .pricing-box span.edufair-mark {
 }
 /* High School Extra Features */
 .edufair-high-school-extra-features-1x {
-	
+
 }
 
 .high-school-single-extra-features {
@@ -4671,7 +4673,7 @@ a.left-color-button-2x {
 }
 
 .high-school-single-info img {
-	
+
 }
 
 .high-school-single-info-body {
@@ -4832,7 +4834,7 @@ a.left-color-button-2x {
 }
 
 .high-school-fun-facts h3 {
-	
+
 }
 
 .high-school-news {
@@ -4881,7 +4883,7 @@ span.counter {
 	color: #f1f1f1;
 }
 /*********************************************
-		Edufair kids 
+		Edufair kids
 **********************************************/
 .edufair-kindergarten-features-1x {
 	padding-top: 70px;
@@ -4951,23 +4953,23 @@ span.counter {
 }
 /* Hover css */
 .single-kindergarten-features-1x:hover {
-	background: linear-gradient(309deg, rgba(205,240,22,1) 0%, rgba(0,212,255,1) 77%);	
+	background: linear-gradient(309deg, rgba(205,240,22,1) 0%, rgba(0,212,255,1) 77%);
 }
 
 .single-kindergarten-features-2x:hover {
-	background: linear-gradient(24deg, rgba(121,60,229,1) 0%, rgba(0,246,182,1) 77%);	
+	background: linear-gradient(24deg, rgba(121,60,229,1) 0%, rgba(0,246,182,1) 77%);
 }
 
 .single-kindergarten-features-3x:hover {
-	background: linear-gradient(146deg, rgba(241,247,62,1) 0%, rgba(248,91,255,1) 77%);	
+	background: linear-gradient(146deg, rgba(241,247,62,1) 0%, rgba(248,91,255,1) 77%);
 }
 
 .single-kindergarten-features-4x:hover {
-	background: linear-gradient(142deg, rgba(0,246,182,1) 0%, rgba(55,71,228,1) 77%);	
+	background: linear-gradient(142deg, rgba(0,246,182,1) 0%, rgba(55,71,228,1) 77%);
 }
 
 .single-kindergarten-features-5x:hover {
-	background: linear-gradient(56deg, rgba(233,244,59,1) 0%, rgba(0,246,182,1) 77%);	 
+	background: linear-gradient(56deg, rgba(233,244,59,1) 0%, rgba(0,246,182,1) 77%);
 }
 
 .single-kindergarten-features-6x:hover {
@@ -5005,7 +5007,7 @@ span.counter {
 }
 
 .kindergarten-read-more:hover {
-	
+
 }
 
 .edufair-testimonial-timer-1x .edufair-testimonial span {
@@ -5128,7 +5130,7 @@ span.heading-divider:after {
 	text-transform: uppercase;
 }
 /***********************************************
-		Online course One 
+		Online course One
 ***********************************************/
 .online-course-2x  .subscriber-form input[type="text"],
 	.online-course-1x  .subscriber-form input[type="text"],
@@ -5264,7 +5266,7 @@ span.heading-divider:after {
 }
 
 .become-techer-left {
-	
+
 }
 
 .become-techer-right {
@@ -5316,7 +5318,7 @@ span.heading-divider:after {
 }
 
 .online-course-1x .related-course-content p {
-	
+
 }
 
 .online-course-1x .edufair-main-title {
@@ -5367,7 +5369,7 @@ span.heading-divider:after {
 	padding-top: 4px;
 }
 /***********************************************
-		Online course Two 
+		Online course Two
 ***********************************************/
 .online-course-1x .container-2, .online-course-2x .container-2,
 	.online-course-1x .top-menu, .online-course-2x .top-menu {
@@ -5456,11 +5458,11 @@ span.heading-divider:after {
 }
 
 .online-course-2x .edufair-featured-category-1x {
-	
+
 }
 
 .online-course-2x .featured-category-container {
-	
+
 }
 
 .online-course-2x .featured-category-container h2 {
@@ -5483,7 +5485,7 @@ span.heading-divider:after {
 }
 
 .online-course-2x .single-featured-category p {
-	
+
 }
 
 .online-course-2x .featured-category-img {
@@ -5528,7 +5530,7 @@ span.heading-divider:after {
 }
 
 .online-course-2x .single-header-menu {
-	
+
 }
 
 .online-course-2x .single-header-menu i {
@@ -5566,7 +5568,7 @@ span.heading-divider:after {
 }
 
 .online-course-2x .course-teacher-1x {
-	
+
 }
 
 .online-course-2x .edufair-events-1x {
@@ -5574,7 +5576,7 @@ span.heading-divider:after {
 }
 
 .online-course-2x .course-teacher-1x .media {
-	
+
 }
 
 .online-course-2x .course-teacher-1x .media-left {
@@ -5641,7 +5643,7 @@ span.heading-divider:after {
 }
 
 .subscriber-content {
-	
+
 }
 
 .online-course-2x  .subscriber-course-info  ul li {
@@ -5671,11 +5673,11 @@ span.heading-divider:after {
 }
 
 .subscriber-form {
-	
+
 }
 
 .subscriber-form .form-control {
-	
+
 }
 
 .footer-bottom {
@@ -5853,10 +5855,10 @@ span.heading-divider:after {
 }
 
 /*********************************************
-				About Us 
+				About Us
 *********************************************/
 .edufair-notice-1x {
-	
+
 }
 
 .notice-read-more {
@@ -5881,7 +5883,7 @@ span.heading-divider:after {
 }
 
 /*********************************************
-				Vice Chancellor 
+				Vice Chancellor
 *********************************************/
 .vice-chancellor-contents img {
 	width: auto;
@@ -5889,7 +5891,7 @@ span.heading-divider:after {
 }
 
 /*********************************************
-				Admission Apply 
+				Admission Apply
 *********************************************/
 .admission-form-1x .edufair-subscription-form-1x {
 	padding: 0;
@@ -5923,10 +5925,10 @@ span.heading-divider:after {
 }
 
 /*********************************************
-				Contact us 
+				Contact us
 *********************************************/
 .contact-us-header {
-	
+
 }
 
 .contact-us-header h2 {
@@ -6183,10 +6185,10 @@ span.highlight-dark {
 	color: #262626;
 }
 /************************************************
-				404 page	
+				404 page
 *************************************************/
 .edufair-404-page-1x {
-	
+
 }
 
 .page-404-content {
@@ -6421,6 +6423,22 @@ button.login-input:active{border:solid 1px transparent;}
 
 .btn-regist-wrap{display:flex;}
 .btn-review-regist{width:140px; height:40px; font-family:'Pretendard'; font-size: 18px; background: #22b9ac; color:white; border:solid 1px #22b9ac;}
+
+/* Service Page 설정 서비스 페이지 221011 */
+table.svc-table th {color:#262626; font-size:15px;}
+table.svc-table tr {line-height: 5rem; }
+table.svc-table .svc-form-select{width:200px; height:40px; font-size:14px; text-indent:5px;}
+table.svc-table .svc-input-price {width:200px; text-align:right;}
+table.svc-table .svc-input-title {display:inline-block; width:200px; }
+table.svc-table .svc-input-img {font-size:15px; margin-bottom:4px;}
+table.svc-table .svc-img-desc{font-size:12px; color:#f14545;}
+table.svc-table .svc-form-detail-con {width:90%; height:360px; font-size:14px; color:#262626; }
+
+div.review-modal-content{padding:40px; color:#262626; background-color:#fdfdfd ! important;}
+div.review-modal-body p{display:block;}
+div.review-modal-body .review-modal-title{font-weight:600;}
+div.review-modal-body .review-modal-input{display:block; width:100%; color:#262626;}
+div.review-modal-body .review-modal-textarea{height:200px;}
 
 /* Notice Page 공지사항 페이지 220829 */
 .notice-cat{width: 200px; height:50px; text-indent:5px; font-size:16px;}

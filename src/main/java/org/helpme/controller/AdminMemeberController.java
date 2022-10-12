@@ -87,6 +87,8 @@ public class AdminMemeberController {
 		logger.info("post member modify");
 		System.out.println(vo);
 
+		vo.setUserId(vo.getUserId().substring(0,vo.getUserId().indexOf(",")));
+
 		adminMemberService.updateMember(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/admin/memberList";
