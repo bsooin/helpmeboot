@@ -88,8 +88,6 @@ public class AdminMemeberController {
 
 		vo.setUserId(vo.getUserId().substring(0,vo.getUserId().indexOf(",")));
 
-		vo.setUserId(vo.getUserId().substring(0,vo.getUserId().indexOf(",")));
-
 		adminMemberService.updateMember(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/admin/memberList";
