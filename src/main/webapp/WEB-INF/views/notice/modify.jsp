@@ -48,7 +48,7 @@
 
 			<div class="box-body">
 				<tr>
-					<td><select name="noticeCat" style="width: 200px;">
+					<td><select name="noticeCat" class="notice-cat">
 							<option value="notice">공지사항</option>
 							<option value="event">이벤트</option>
 					</select></td>
@@ -68,9 +68,9 @@
 			</div>
 
 	<button type="submit"
-				class="edufair-component-button button-medium">저장</button>
+				class="edufair-component-button button-large">저장</button>
 			<button type="button"
-				class="edufair-component-button button-medium"
+				class="edufair-component-button button-large"
 				onclick="window.location.href='list'">취소</button>
 		
 

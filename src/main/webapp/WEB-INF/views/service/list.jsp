@@ -6,15 +6,6 @@
 
 <%@ include file="../include/header.jspf"%>
 
-<body>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	<!-- Preloader -->
-	<div id="fakeloader"></div>
-
 	<!-- Start main slider -->
 	<div id="carousel-example-generic"
 		class="carousel slide edufair-slide carousel-fade"
@@ -107,9 +98,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 	</div>
 <div class="container wow fadeIn">
 		<div class="row">
@@ -215,7 +203,7 @@
 			<div class="row">
 				<div class="col-md-12" style="text-align: center;">
 					<div class="edufair-component-button button-large margin-top-small">
-						<a id="btn-service-regist" href="newService">서비스 등록</a>
+						<a id="btn-service-regist" href="newService">재능 등록</a>
 					</div>
 				</div>
 			</div>
@@ -252,8 +240,6 @@
 				+ "&orderType=" + $("select option:selected").val()
 				+ "&keyword=" + $('#keyword').val();
 		});
-		
-
 
 	</script>
 

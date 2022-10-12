@@ -1,6 +1,6 @@
 package org.helpme.service;
 
-import org.apache.commons.mail.HtmlEmail;
+import lombok.AllArgsConstructor;
 import org.helpme.domain.AccountInfoVO;
 import org.helpme.domain.MemberVO;
 import org.helpme.domain.ServiceVO;
@@ -8,6 +8,8 @@ import org.helpme.dto.LoginDTO;
 import org.helpme.dto.ReviewDTO;
 import org.helpme.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +20,7 @@ import java.util.List;
 @Service
 //@Configuration
 //@MapperScan("org.yuni.mapper")
+@AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
@@ -113,48 +116,24 @@ public class MemberServiceImpl implements MemberService {
 		//비밀번호 찾기 이메일발송
 		@Override
 		public void sendEmail(MemberVO vo, String div) throws Exception {
-			// Mail Server 설정
-			String charSet = "utf-8";
-			String hostSMTP = "smtp.naver.com"; //지메일 이용시 smtp.gmail.com
-			String hostSMTPid = "hyh_yamap@naver.com";
-			String hostSMTPpwd = "Tivmfks135!";
-			// 네이버 환경설정 하기
-			
-			// 보내는 사람 EMail, 제목, 내용
-			String fromEmail = "hyh_yamap@naver.com";
-			String fromName = "helpme";
-			String subject = "";
+
 			String msg = "";
 
-			if(div.equals("findpw")) {
-				subject = "HELP ME 임시 비밀번호 입니다.";
-				msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-				msg += "<h3 style='color: blue;'>";
-				msg += vo.getUserId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
-				msg += "<p>임시 비밀번호 : ";
-				msg += vo.getUserPw() + "</p></div>";
-			}
+			String subject = "HELP ME 임시 비밀번호 입니다.";
+			msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+			msg += "<h3 style='color: blue;'>";
+			msg += vo.getUserId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
+			msg += "<p>임시 비밀번호 : ";
+			msg += vo.getUserPw() + "</p></div>";
 
-			// 받는 사람 E-Mail 주소
-			String mail = vo.getUserEmail();
-			try {
-				HtmlEmail email = new HtmlEmail();
-				email.setDebug(true);
-				email.setCharset(charSet);
-				// email.setSSL(true);
-				email.setHostName(hostSMTP);
-				email.setSmtpPort(465); //네이버 이용시 587
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setTo(vo.getUserEmail());
+			message.setFrom("teacher923@naver.com");
+			message.setSubject(subject);
+			message.setText(msg);
 
-				email.setAuthentication(hostSMTPid, hostSMTPpwd);
-				// email.setTLS(true);
-				email.addTo(mail, charSet);
-				email.setFrom(fromEmail, fromName, charSet);
-				email.setSubject(subject);
-				email.setHtmlMsg(msg);
-				email.send();
-			} catch (Exception e) {
-				System.out.println("메일발송 실패 : " + e);
-			}
+			mailSender.send(message);
+
 		}
 
 		//비밀번호찾기

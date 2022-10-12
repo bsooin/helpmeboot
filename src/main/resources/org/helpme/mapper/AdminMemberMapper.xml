@@ -64,13 +64,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <update id="updateMember">
 		UPDATE MEMBER 
 		SET
-		userPw=#{userPw},
-		userEmail=#{userEmail},
-		userName=#{userName},
-		phone=#{phone},
-		address=#{address},
-		sms=#{sms},
-		userRank=#{userRank}
+		userPw = #{userPw},
+		userEmail = #{userEmail},
+		userName = #{userName},
+		phone = #{phone},
+		address = #{address},
+		sms = #{sms},
+		userRank = #{userRank}
 		 where userId = #{userId}
 	</update>
 

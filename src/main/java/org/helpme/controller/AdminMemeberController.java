@@ -85,7 +85,8 @@ public class AdminMemeberController {
 	@PostMapping("/updateMember")
 	public String  updateMemberPOST(MemberVO vo , HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post member modify");
-		System.out.println(vo);
+
+		vo.setUserId(vo.getUserId().substring(0,vo.getUserId().indexOf(",")));
 
 		vo.setUserId(vo.getUserId().substring(0,vo.getUserId().indexOf(",")));
 
