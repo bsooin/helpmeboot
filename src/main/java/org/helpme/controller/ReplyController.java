@@ -25,7 +25,7 @@ public class ReplyController {
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 	
 
-	private ReplyService ReplyService;
+	private final ReplyService ReplyService;
 	
 	// 댓글 작성
 	@PostMapping("/replyWrite")

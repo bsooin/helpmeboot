@@ -44,8 +44,7 @@ public class ServiceController {
 
     private static final Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
-    @Value("uploadPath")
-    private String uploadPath ;
+    private final String uploadPath = "C:\\team2";
 
     private final ServiceService serviceS;
 
@@ -64,7 +63,7 @@ public class ServiceController {
     }
 
 
-    @PostMapping("/detail")
+    @GetMapping("/detail")
     public void read(@RequestParam("sNo") int sNo, @ModelAttribute("cri") SearchCriteria cri, Model model,
                      HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
@@ -144,7 +143,7 @@ public class ServiceController {
                                    @RequestParam(name = "detailFile", required = false) List<MultipartFile> detailFile,
                                    RedirectAttributes rttr) throws Exception {
 
-        if (file.getOriginalFilename() != null && file.getOriginalFilename() != "" && checkFile(file)) {
+        if (!file.getOriginalFilename().equals("") && checkFile(file)) {
             String serviceFileName = serviceS.read(service.getSNo()).getSAttach();
 
             deleteFile(serviceFileName);
@@ -164,7 +163,7 @@ public class ServiceController {
             serviceS.deleteDetail(service.getSNo());
             for (MultipartFile m : detailFile) {
 
-                if (m.getOriginalFilename() != null && m.getOriginalFilename() != "" && checkFile(m))
+                if (!file.getOriginalFilename().equals("") && checkFile(file))
                     serviceS.detailAttach(service.getSNo(), uploadDetailFile(m.getOriginalFilename(), m.getBytes()));
             }
 
@@ -200,7 +199,7 @@ public class ServiceController {
         logger.info("regist post ...........");
         logger.info(service.toString());
 
-        if (file != null && checkFile(file)) {
+        if (!file.getOriginalFilename().equals("") && checkFile(file)) {
             service.setSAttach(uploadFile(file.getOriginalFilename(), file.getBytes()));
         } else {
             service.setSAttach("basic.jpg");
@@ -213,7 +212,7 @@ public class ServiceController {
         serviceS.regist(service);
 
         for (MultipartFile m : detailFile) {
-            if (m.getOriginalFilename() != null && m.getOriginalFilename() != "" && checkFile(m)) {
+            if (!file.getOriginalFilename().equals("") && checkFile(file)) {
                 serviceS.detailAttach(serviceS.getLastSNo(), uploadDetailFile(m.getOriginalFilename(), m.getBytes()));
             }
         }
@@ -227,7 +226,6 @@ public class ServiceController {
     @PatchMapping("/{sNo}")
     public ResponseEntity<String> likeIt(@PathVariable("sNo") Integer sNo, HttpServletRequest request)
             throws Exception {
-
         ResponseEntity<String> entity = null;
 
         HttpSession session = request.getSession();
@@ -444,8 +442,8 @@ public class ServiceController {
                     + "&total_amount=" + totalAmount // 총 금액
                     + "&vat_amount=0" // 부가세
                     + "&tax_free_amount=0" // 상품 비과세 금액
-                    + "&approval_url=http://localhost:8080/order/orderSuccess" // 결제 성공 시
-                    + "&fail_url=http://localhost:8080/order/orderFail" // 결제 실패 시
+                    + "&approval_url=http://localhost:8080/my/mydeal" // 결제 성공 시
+                    + "&fail_url=http://localhost:8080/my/mydeal" // 결제 실패 시
                     + "&cancel_url=http://localhost:8080/main/index"; // 결제 취소 시
             OutputStream send = connection.getOutputStream(); // 이제 뭔가를 를 줄 수 있다.
             DataOutputStream dataSend = new DataOutputStream(send); // 이제 데이터를 줄 수 있다.

@@ -24,7 +24,7 @@ public class NoticeController {
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 
 
-	private NoticeService service;
+	private final NoticeService service;
 
 	@GetMapping("/list")
 	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {

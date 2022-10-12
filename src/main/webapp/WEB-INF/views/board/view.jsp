@@ -69,7 +69,11 @@
 				<tr class="view-Comm viewCon-Comm">
 					<th>내용</th>
 					<td colspan="3"><pre class="board-con-normal">${list.cBoardCon}</pre>
-					<img alt="" src="/service/displayFile?fileName=${list.cFileName}"></td>
+
+					<c:if test="${list.cFileName != null}">
+                    					<img alt="" src="/service/displayFile?fileName=${list.cFileName}"></td>
+                    					</c:if>
+
 				</tr>
 			</table>
 			

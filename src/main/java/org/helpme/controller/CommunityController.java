@@ -1,5 +1,7 @@
 package org.helpme.controller;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.helpme.domain.CommunityVO;
 import org.helpme.domain.Criteria;
 import org.helpme.domain.PageMaker;
@@ -29,7 +31,7 @@ public class CommunityController {
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
 	
 	// 자동 DI 적용시키는 어노테이션 - Inject, Autowired
-	@Autowired
+	 @Autowired
 	private CommunityService CommunityService;
 
 	private final String uploadPath = "C:\\team2";
@@ -48,8 +50,9 @@ public class CommunityController {
 		logger.info(CommunityVO.toString());
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
-		
-		if (file != null && checkFile(file)) {
+
+		if (!file.getOriginalFilename().equals("") && checkFile(file))
+		{
 			CommunityVO.setcFileName(uploadFile(file.getOriginalFilename(), file.getBytes()));
 		} else {
 			CommunityVO.setcFileName("");
@@ -113,7 +116,7 @@ public class CommunityController {
 		CommunityVO CommunityVO,@RequestParam(name = "attachFile", required = false) MultipartFile file,
 		RedirectAttributes rttr) throws Exception {
 			logger.info("mod post............");
-			if (file != null && checkFile(file)) {
+		if (!file.getOriginalFilename().equals("") && checkFile(file)){
 				CommunityVO.setcFileName(uploadFile(file.getOriginalFilename(), file.getBytes()));
 			} else {
 				CommunityVO.setcFileName("");
