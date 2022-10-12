@@ -115,8 +115,8 @@
 
 									<c:if test="${completeId}">
 										<div class="btn-regist-wrap margin-bottom-middle">
-										<button class="reviewBtn btn-review-regist"	data-toggle="modal" 
-										data-target="#reviewModal">리뷰 등록</button>
+										<button class="reviewBtn edufair-component-button button-large"
+										data-toggle="modal" data-target="#reviewModal">리뷰 등록</button>
 										</div>
 									</c:if>
 
@@ -175,32 +175,30 @@
 <div id="reviewModal" class="modal modal-primary fade" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
-		<div class="modal-content" style="color:black;">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">
-					<input type="text" id="reviewId" name="reviewId"
-						class="form-control" style="width:50px;" readonly>
-				</h4>
-			</div>
-			<div class="modal-body" data-rno>
-				<p>
-					작성자:
-					<input type="text" id="reviewWriter" name="reviewWriter"
-						style="width:500px;color:black;" readonly>
-						
+		<div class="modal-content review-modal-content">
+		    <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    <input type="text" id="reviewId" name="reviewId"
+                        class="form-control" style="width:50px;" readonly>
+                </h4>
+            </div>
+			<div class="modal-body review-modal-body" data-rno>
+				<p><span class="review-modal-title">작성자</span>
+					<input type="text" id="reviewWriter" name="reviewWriter" class="review-modal-input" readonly>
+
 				</p>
 				<p>
-					제목:&emsp;
-						<input type="text" id="reviewTitle" name="reviewTitle" 
-								placeholder="리뷰 제목을 적어주세요 (30자 이내)" style="width:500px;">
+					<span class="review-modal-title">제목</span>
+						<input type="text" id="reviewTitle" name="reviewTitle" class="review-modal-input"
+								placeholder="리뷰 제목을 적어주세요 (30자 이내)">
 				</p>
 				<p>
-					리뷰:&emsp;
-						<textarea id="reviewCon" name="reviewCon"
-						placeholder="솔직한 리뷰 작성 부탁드립니다"  style="width:500px;height:200px;"></textarea>
+					<span class="review-modal-title">내용</span>
+						<textarea id="reviewCon" name="reviewCon" class="review-modal-input review-modal-textarea"
+						placeholder="솔직한 리뷰 작성 부탁드립니다."></textarea>
 				</p>
-				<p>평점:&emsp;
+				<p><span class="review-modal-title">평점</span>
 						<input type="radio" id="reviewStar" name="reviewStar" value="1" checked="checked">1점
 							&ensp;<input type="radio" id="reviewStar" name="reviewStar" value="2">2점
 							&ensp;<input type="radio" id="reviewStar" name="reviewStar" value="3">3점
@@ -209,13 +207,13 @@
 				</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-info reviewSave"
+				<button type="button" class="btn reviewSave edufair-component-button button-large"
 					id="reviewRegBtn">등록</button>
-				<button type="button" class="btn btn-danger reviewModify"
+				<button type="button" class="btn reviewModify edufair-component-button button-large"
 					id="reviewModBtn">수정</button>
-					<button type="button" class="btn btn-danger reviewDelete"
+					<button type="button" class="btn reviewDelete edufair-component-button button-large"
 					id="reviewDelBtn">삭제</button>
-				<button type="button" class="btn btn-default reviewClose"
+				<button type="button" class="btn reviewClose edufair-component-button button-large"
 					data-dismiss="modal">닫기</button>
 			</div>
 		</div>

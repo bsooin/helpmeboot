@@ -80,7 +80,7 @@
 												<li>
 
 	                                <i class="edufair-component-button button-medium">
-									<a href= "modify.noticeId?noticeId=${noticeVO.noticeId }">수정</a></i>
+									<a href= "modify?noticeId=${noticeVO.noticeId }">수정</a></i>
 											<i class="edufair-component-button button-medium">
 									<a href= "remove?noticeId=${noticeVO.noticeId }">삭제</a></i>
 											<i class="edufair-component-button button-medium">
