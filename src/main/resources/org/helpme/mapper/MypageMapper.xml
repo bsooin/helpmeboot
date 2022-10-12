@@ -8,17 +8,7 @@
 
 	<!-- 회원 정보 조회 -->
 	<select id="selectId" resultType="org.helpme.domain.MemberVO">
-		select userId,
-		userPw,
-		userEmail,
-		userName,
-		phone,
-		gender,
-		address,
-		regDate,
-		sms,
-		accTerms,
-		userRank
+		select *
 		from member where userId = #{userId}
 
 	</select>

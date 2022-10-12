@@ -63,7 +63,7 @@ public class ServiceController {
     }
 
 
-    @GetMapping("/detail")
+    @PostMapping("/detail")
     public void read(@RequestParam("sNo") int sNo, @ModelAttribute("cri") SearchCriteria cri, Model model,
                      HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
@@ -163,7 +163,7 @@ public class ServiceController {
             serviceS.deleteDetail(service.getSNo());
             for (MultipartFile m : detailFile) {
 
-                if (!file.getOriginalFilename().equals("") && checkFile(file))
+                if (!m.getOriginalFilename().equals("") && checkFile(m))
                     serviceS.detailAttach(service.getSNo(), uploadDetailFile(m.getOriginalFilename(), m.getBytes()));
             }
 
@@ -212,7 +212,7 @@ public class ServiceController {
         serviceS.regist(service);
 
         for (MultipartFile m : detailFile) {
-            if (!file.getOriginalFilename().equals("") && checkFile(file)) {
+            if (!m.getOriginalFilename().equals("") && checkFile(m)) {
                 serviceS.detailAttach(serviceS.getLastSNo(), uploadDetailFile(m.getOriginalFilename(), m.getBytes()));
             }
         }
@@ -226,6 +226,7 @@ public class ServiceController {
     @PatchMapping("/{sNo}")
     public ResponseEntity<String> likeIt(@PathVariable("sNo") Integer sNo, HttpServletRequest request)
             throws Exception {
+
         ResponseEntity<String> entity = null;
 
         HttpSession session = request.getSession();

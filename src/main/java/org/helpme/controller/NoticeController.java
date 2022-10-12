@@ -31,6 +31,7 @@ public class NoticeController {
 
 		logger.info(cri.toString());
 
+		System.out.println("cri = " + cri );
 		// model.addAttribute("list", service.listCriteria(cri));
 		model.addAttribute("list", service.listSearchCriteria(cri));
 
@@ -65,7 +66,7 @@ public class NoticeController {
 	}
 
 	@GetMapping("/modify")
-	public void modifyGET(int noticeId,@ModelAttribute("cri") SearchCriteria cri,  Model model) throws Exception {
+	public void modifyGET(int noticeId, @ModelAttribute("cri") SearchCriteria cri,  Model model) throws Exception {
 
 		model.addAttribute(service.read(noticeId));
 	}
@@ -100,6 +101,7 @@ public class NoticeController {
 
 		logger.info("regist post ...........");
 		logger.info(notice.toString());
+
 
 		service.create(notice);
 
