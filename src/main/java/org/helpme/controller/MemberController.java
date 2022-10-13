@@ -351,6 +351,15 @@ public class MemberController {
 	}
 
 
+	@GetMapping("/deleteAccount")
+	public String deleteAccount(@RequestParam("userId") String userId, RedirectAttributes rttr,  HttpSession session) throws Exception {
+		service.deleteAccount(userId);
+
+		rttr.addFlashAttribute("msg", "계정 정보 삭제가 완료되었습니다.");
+
+		return "redirect:/main/modify";
+	}
+
 }
 
 	

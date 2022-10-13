@@ -177,4 +177,10 @@ public class MemberServiceImpl implements MemberService {
 		return false;
 	}
 
+	@Override
+	public void deleteAccount(String userId) throws Exception {
+
+		memberMapper.deleteAccount(userId);
+	}
+
 }

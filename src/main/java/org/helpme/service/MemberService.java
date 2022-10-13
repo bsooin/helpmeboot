@@ -48,4 +48,5 @@ public interface MemberService {
 
 	public boolean getAccount(AccountInfoVO accountVO);
 
+	public void deleteAccount(String userId) throws Exception;
 }

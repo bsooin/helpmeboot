@@ -48,4 +48,7 @@ public interface MemberMapper {
 	public void updateAccount(AccountInfoVO account) throws Exception;
 
 	public Integer getAccount(AccountInfoVO account);
+
+	public void deleteAccount(String userId) throws Exception;
+
 }

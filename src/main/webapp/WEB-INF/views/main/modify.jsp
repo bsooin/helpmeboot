@@ -214,6 +214,14 @@ table.type1 td {
 
 
 								</tr>
+
+								<tr>
+                                       <td colspan="2" align="center">
+                                      <button class="edufair-component-button button-large"  type="button"
+                                      onclick="accountDel()">계좌정보 삭제
+                                     </button></td>
+
+                                 </tr>
 							</table>
 							
 							<br />
@@ -247,6 +255,13 @@ table.type1 td {
 	function goBack() {
 		window.history.go(-1);
 	}
+
+
+function accountDel() {
+			if (confirm("정말 삭제하시겠습니까?")) {
+				location.replace('/main/deleteAccount?userId=${vo.getUserId()}');
+			}
+		};
 	
 
 </script>
